@@ -1,14 +1,21 @@
-{% load static %}
+{% extends 'bases/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% load static%}
+{% block css %}
     <link rel="stylesheet" href="{% static 'styles/login.css' %}">
-    <title>Prueba</title>
-</head>
-<body>
-    <h1>Hola home!</h1>
-</body>
-</html>
+{% endblock %}
+
+{% block title %}
+    <title>Home</title>
+{% endblock %}
+
+{% block nav %}
+    <a href="/login">Login</a>
+    <!--<a href="/register">Register</a>-->
+{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the home page!</h1>
+{% endblock %}
+
+

@@ -10,24 +10,25 @@
 {% endblock %}
 
 {% block nav %}
+    <a href="/login">Login</a>
 {% endblock %}
 
 {% block content %}
 <div class="form">
     <form method="POST">
         {% csrf_token %}
-        <h3>Login</h3>
+        <h3>Tu nombre</h3>
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" required>
         </div>
-        <h3>Password</h3>
+        <h3>Tu contraseña</h3>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
         </div>
     </form>
-    <button type="submit">Sign In</button>
+    <button type="submit">Sign Up</button>
     <input type="checkbox" name="remember" id="remember"> 
     <label for="remember">Remember me</label>
     <a href="/register">Don't have an account?</a>
