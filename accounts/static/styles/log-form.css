@@ -1,74 +1,9 @@
 /* styles/login.css */
 
-/* Estilos para el formulario de inicio de sesión */
-body {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 80vh;
-    margin: 0;
-}
-
-
-.form {
-    width: 20%;
-    padding: 20px;
-    background-color: #CCE3DE;
-    border-radius: 5px;
-    margin-top: 5em;
-    font-family: 'Roboto', sans-serif;
-    margin-right: 10%;
-}
-
-.form-group input {
-    width: 95%;
-    height: 2em;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 5px;
-    background-color: #EAF4F4;
-    font-size: large;
-    color: #6B9080;
-}
-
-.form-group input::placeholder {
-    color: #6B9080;
-    font-size: large;
-}
-
-.form h2 {
-    color: #6B9080;
-}
-
-.form button[type="submit"] {
-    display: block; /* Cambiamos a un elemento de bloque */
-    width: 55%;
-    height: 3.1em;
-    padding: 10px;
-    background-color: #6B9080;
-    border: none;
-    color: #fff;
-    border-radius: 0px;
-    cursor: pointer;
-    margin: 0 auto; /* Centramos horizontalmente */
-    font-size:medium;
-}
-
-/* Estilos para los enlaces */
-.form a {
-    color: #6B9080;
-}
-
-.form a:hover {
-    color: #4D6E63;
-}
-
 .remember-forgot {
     display: flex;
     align-items: center;
-    margin-top: 1.3em;
-    margin-bottom: 1.5em;
+    margin-top: 1.1em;
 }
 
 .forgot {
@@ -77,22 +12,18 @@ body {
 }
  .register {
     display: block;
-    margin-top: 0.8em;
     text-align: center;
-    
  }
 
  /* CSS para estilizar la checkbox */
 .remember-forgot input[type="checkbox"] {
     appearance: none; /* Oculta la apariencia por defecto */
-    -webkit-appearance: none; /* Para navegadores basados en WebKit como Chrome y Safari */
-    -moz-appearance: none; /* Para navegadores basados en Gecko como Firefox */
     width: 20px; /* Ajusta el tamaño deseado */
     height: 20px; /* Ajusta el tamaño deseado */
     border: 1px solid #ccc; /* Borde */
     border-radius: 4px; /* Borde redondeado */
-    background-color: #fff; /* Color de fondo */
-    margin-right: 10px; /* Espacio entre el checkbox y el texto */
+    background-color: #EAF4F4; /* Color de fondo */
+    margin-right: 5px; /* Espacio entre el checkbox y el texto */
     cursor: pointer; /* Cambia el cursor al pasar sobre el checkbox */
 }
 
