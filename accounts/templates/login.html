@@ -2,7 +2,11 @@
 
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'styles/login.css' %}">
+<link rel="stylesheet" href="{% static 'styles/base.css' %}">
+<link rel="stylesheet" href="{% static 'styles/log-form.css' %}">
+
+
+
 {% endblock %}
 
 {% block title %}
@@ -16,21 +20,23 @@
 <div class="form">
     <form method="POST">
         {% csrf_token %}
-        <h3>Login</h3>
+        <h2>Sign In</h2>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
+            <input type="text" name="username" id="username" placeholder="username" required>
         </div>
-        <h3>Password</h3>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" placeholder="password" required>
         </div>
     </form>
+    <div class="remember-forgot">
+        <input type="checkbox" name="remember" id="remember"> 
+        <label for="remember">Remember me</label>
+        <a href="/forgot-password" class="forgot">Forgot password?</a>
+    </div>    
     <button type="submit">Sign In</button>
-    <input type="checkbox" name="remember" id="remember"> 
-    <label for="remember">Remember me</label>
-    <a href="/register">Don't have an account?</a>
-    <a href="/forgot-password">Forgot password?</a>
+    <div class="register">
+        <a href="/register">Not a member? Sign Up</a>
+    </div>
+    
 </div>
 {% endblock %}
