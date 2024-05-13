@@ -1,14 +1,53 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Estudiante
+from .forms import Login, Register, ForgetPassword
 
 # Create your views here.
 def login(request):
-    return render(request, 'login.html')
+    if request.method == 'GET':
+        #mostramos la pagina
+        return render(request, 'login.html', {
+        'form': Login
+        })
+
+    elif request.method == 'POST':
+        form = Login(request.POST)
+        #validamos los datos
+        validacion = True
+        if validacion:
+            #redirigimos al foro (home por mientras)
+            return redirect('/')
+        else:
+            #aviso y que intente de nuevo
+            return render(request, 'login.html', {
+            'form': Login
+            })
 
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'GET':
+        #mostramos la página
+        return render(request, 'register.html', {
+            'form': Register
+        })
+
+    elif request.method == 'POST':
+        form = Register(request.POST)
+        #validamos los datos
+        validacion = True
+        if validacion == True:
+            #acá se agrega un nuevo estudiante a la db
+            #Estudiante.objects.create(request.POST['username'])
+            #probablemente redirigimos al login
+            return redirect('/login/')
+        else:
+            return render(request, 'register.html', {
+            'form': Register
+            })
 
 def forgot_password(request):
-    return render(request, 'forgot-password.html')
+    return render(request, 'forgot-password.html', {
+        'form': ForgetPassword
+    })
 
 def home(request):
     return render(request, 'home.html')

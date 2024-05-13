@@ -10,10 +10,11 @@
     </head>
     
     <body>
-        <div class="navbar">
-            {% block nav %}
-            {% endblock %}
-        </div>
+        <nav class="navbar">
+            <ul>
+                {% block extra_nav %}{% endblock %}
+            </ul>
+        </nav>
         
         {%block content%}
         {%endblock%}

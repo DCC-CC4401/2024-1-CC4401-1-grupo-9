@@ -9,9 +9,9 @@
     <title>Home</title>
 {% endblock %}
 
-{% block nav %}
-    <a href="/login">Login</a>
-    <!--<a href="/register">Register</a>-->
+{% block extra_nav %}
+<li><a href="{% url 'login' %}"><i class="forgot"></i> Login</a></li>
+<li><a href="{% url 'register' %}"><i class="forgot"></i> Registro</a></li>
 {% endblock %}
 
 {% block content %}

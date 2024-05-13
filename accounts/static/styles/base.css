@@ -31,6 +31,7 @@ body {
     background-color: #EAF4F4;
     font-size: large;
     color: #6B9080;
+    margin-top: 0.1em;
     margin-bottom: 0.2em;
     border-color: #6B9080;
 }
@@ -44,8 +45,9 @@ body {
     color: #6B9080;
 }
 
-.form h3 {
+.form h4 {
     color: #6B9080;
+    margin-bottom: 0.4em;
 }
 
 .form button[type="submit"] {
@@ -86,4 +88,3 @@ body {
 .links a{
     margin-bottom: 0.5em;
 }
-

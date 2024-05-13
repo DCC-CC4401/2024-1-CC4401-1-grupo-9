@@ -9,26 +9,40 @@
 <title>Login</title>
 {% endblock %}
 
-{% block nav %}
+{% block extra_nav %}
+<li><a href="{% url 'home' %}"><i class="forgot"></i>Inicio</a></li>
+<li><a href="{% url 'login' %}"><i class="forgot"></i> Login</a></li>
 {% endblock %}
 
 {% block content %}
 <div class="form">
-    <form method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         <h2>Register</h2>
-        <h3>Tu nombre</h3>
+        <h4>Tu nombre</h4>
         <div class="form-group">
-            <input type="text" name="username" id="username" placeholder="username" required>
+            {{ form.first_name_r }}
         </div>
-        <h3>Tu contraseña</h3>
+        <h4>Tu apellido</h4>
         <div class="form-group">
-            <input type="password" name="password" id="password" placeholder="password" required>
+            {{ form.last_name_r }}
+        </div>
+        <h4>Tu email</h4>
+        <div class="form-group">
+            {{ form.email_r }}
+        </div>
+        <h4>Tu nombre de usuario</h4>
+        <div class="form-group">
+            {{ form.username_r }}
+        </div>
+        <h4>Tu contraseña</h4>
+        <div class="form-group">
+            {{ form.password_r }}
+        </div>
+        <button type="submit" name="submit">Sign Up</button>
+        <div class="links">
+            <a href="/login">Do you have an account? Log In</a>
         </div>
     </form>
-    <button type="submit">Sign Up</button>
-    <div class="links">
-        <a href="/login">Do you have an account? Log In</a>
-    </div>
 </div>
 {% endblock %}
