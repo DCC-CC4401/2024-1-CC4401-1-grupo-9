@@ -36,7 +36,10 @@ def register(request):
         validacion = True
         if validacion == True:
             #acá se agrega un nuevo estudiante a la db
-            #Estudiante.objects.create(request.POST['username'])
+            Estudiante.objects.create(username = request.POST['username'],
+                                      password = request.POST['password1'],
+                                      rol = "1",
+                                      email = request.POST['email'])
             #probablemente redirigimos al login
             return redirect('/login/')
         else:
