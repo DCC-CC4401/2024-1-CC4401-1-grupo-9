@@ -17,7 +17,7 @@ class Material(models.Model):
         - course: Ramo del material
     """
     name  = models.CharField(max_length=50)
-    path  = models.CharFiled(max_lenght=50)
+    path  = models.CharField(max_length=50)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
