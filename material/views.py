@@ -9,6 +9,6 @@ def material(request):
     if request.method == "GET":
         return render(
             request=request, 
-            template_name='index.html', 
+            template_name='materials.html', 
             context={"materials": materials, "courses": courses})
 

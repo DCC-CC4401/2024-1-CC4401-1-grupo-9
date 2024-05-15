@@ -1,0 +1,43 @@
+.main-container{
+    width: 100%;
+    display: flex;
+
+    flex-direction: row;
+    height: 100%;
+}
+
+.filters-container{
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+
+    gap: 10px;
+}
+
+.filter{
+    width: 90%;
+    background-color: #f0f0f0;
+    padding: 3px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.materials-container{
+
+    padding-top: 10px;
+    padding-left: 10px;
+
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 70%;
+
+    gap: 40px;
+}
+
+.material{
+    font-weight: bold;
+}
