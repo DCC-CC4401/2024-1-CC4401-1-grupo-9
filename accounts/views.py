@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Estudiante
 from .forms import Login, Register, ForgetPassword
+from django.contrib.auth import login, authenticate, logout
 
 # Create your views here.
 def login(request):
@@ -33,14 +34,19 @@ def register(request):
     elif request.method == 'POST':
         form = Register(request.POST)
         #validamos los datos
-        validacion = True
-        if validacion == True:
-            #acá se agrega un nuevo estudiante a la db
-            Estudiante.objects.create(username = request.POST['username'],
-                                      password = request.POST['password1'],
-                                      rol = "1",
-                                      email = request.POST['email'])
-            #probablemente redirigimos al login
+
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.succes(request, 'Te registraste EXITOsamente')
+            login(request,user)
+            # acá se agrega un nuevo estudiante a la db
+            # Estudiante.objects.create(username = request.POST['username'],
+            #                           password = request.POST['password1'],
+            #                           rol = "1",
+            #                           email = request.POST['email'])
+            # probablemente redirigimos al login
             return redirect('/login/')
         else:
             return render(request, 'register.html', {
