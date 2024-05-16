@@ -1,0 +1,116 @@
+:root {
+    background-color: #F6FFF8; /* Color de fondo */
+}
+
+/* Estilos para el formulario de inicio de sesión */
+
+.content {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80vh;
+    margin: 0;
+    margin-top: 80px;
+}
+
+.form {
+    width: 30%; /* Ajustar el ancho si es necesario */
+    padding: 20px;
+    background-color: #CCE3DE;
+    border-radius: 5px;
+    margin-top: 5em;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10%;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-right: 10px; /* Ajusta el margen derecho */
+    margin-left: 10px; /* Ajusta el margen izquierdo */
+}
+
+.form-group input {
+    width: 95%;
+    height: 2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #6B9080;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #6B9080;
+}
+
+.form-group2 input {
+    width: 86.5%;
+    height: 2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #6B9080;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #6B9080;
+}
+
+.form-group input::placeholder {
+    color: #6B9080;
+    font-size: large;
+}
+
+.form h2 {
+    color: #6B9080;
+}
+
+.form h4 {
+    color: #6B9080;
+    margin-bottom: 0.4em;
+}
+
+.form button[type="submit"] {
+    display: block; /* Cambiamos a un elemento de bloque */
+    width: 55%;
+    height: 3.1em;
+    padding: 10px;
+    background-color: #6B9080;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto; /* Centramos horizontalmente */
+    font-size: medium;
+    margin-bottom: 0.8em;
+    margin-top: 1.5em;
+}
+
+.form button[type="submit"]:hover {
+    background-color: #4D6E63;
+}
+
+/* Estilos para los enlaces */
+.form a {
+    color: #6B9080;
+}
+
+.form a:hover {
+    color: #4D6E63;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.links a {
+    margin-bottom: 0.5em;
+}
