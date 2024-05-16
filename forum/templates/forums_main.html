@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Forums</title>
+{% endblock %}
+
+{% block css %}
+    <--!link rel="stylesheet" href="{% static 'styles/forums_main.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="forums">
+        <h1>Forums</h1>
+        <div class="forum">
+            <h2>General</h2>
+            <p>General discussion about anything and everything.</p>
+            <a href="{% url 'forum' 'general' %}" class="btn"><button>View</button></a>
+        </div>
+        <div class="forum">
+            <h2>Python</h2>
+            <p>Discussion about the Python programming language.</p>
+            <a href="{% url 'forum' 'python' %}" class="btn"><button>View</button></a>
+        </div>
+        <div class="forum">
+            <h2>JavaScript</h2>
+            <p>Discussion about the JavaScript programming language.</p>
+            <a href="{% url 'forum' 'javascript' %}" class="btn"><button>View</button></a>
+        </div>
+    </div>
+{% endblock %}
