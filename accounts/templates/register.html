@@ -30,21 +30,25 @@
                     {{ form.last_name }}
                 </div>
             </div>
-            <div class="form-group">
-                <h4>Tu email</h4>
-                {{ form.email }}
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Tu nombre de usuario</h4>
+                    {{ form.username }}
+                </div>
+                <div class="form-group2">
+                    <h4>Tu email</h4>
+                    {{ form.email }}
+                </div>
             </div>
-            <div class="form-group">
-                <h4>Tu nombre de usuario</h4>
-                {{ form.username }}
-            </div>
-            <div class="form-group">
-                <h4>Tu contraseña</h4>
-                {{ form.password1 }}
-            </div>
-            <div class="form-group">
-                <h4>Confirma tu contraseña</h4>
-                {{ form.password2 }}
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Tu contraseña</h4>
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group2">
+                    <h4>Confirma tu contraseña</h4>
+                    {{ form.password2 }}
+                </div>
             </div>
             <button type="submit" name="submit">Sign Up</button>
             <div class="links">
