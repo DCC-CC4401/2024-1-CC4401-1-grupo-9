@@ -2,7 +2,6 @@
 
 {% load static%}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -10,12 +9,11 @@
 {% endblock %}
 
 {% block extra_nav %}
-<li><a href="{% url 'login' %}"><i class="forgot"></i> Login</a></li>
-<li><a href="{% url 'register' %}"><i class="forgot"></i> Registro</a></li>
 {% endblock %}
 
 {% block content %}
     <h1>Welcome to the home page!</h1>
+    <img src="{% static 'images/hola.jpg' %}" alt="logo">
 {% endblock %}
 
 
