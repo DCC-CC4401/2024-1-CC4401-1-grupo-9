@@ -42,8 +42,8 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             form = ForumMessage(request.POST)
             if form.is_valid():
                 message = form.save(commit=False)
-                message.entry_id = entry_id         ## guardar id de la entrada
-                #message.user_id = request.user   ## guardar id del usuario
+                message.entry = Entry.objects.filter(id=entry_id)
+                message.user = request.user
                 message.save()
                 messages.success(request, 'Mensaje subido exitosamente')
                 return redirect('/forum/'+entry_id)
@@ -56,10 +56,10 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             form = ForumEntry(request.POST)
             if form.is_valid():
                 entrada = form.save(commit=False)
-                #entrada.user_id = request.user
+                entrada.user = request.user
                 entrada.save()
                 messages.success(request, 'Entrada subida exitosamente')
-                return redirect('/forum/')
+                return redirect('/forum/'+str(entrada.id))
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
                 return redirect('/forum/')
