@@ -10,9 +10,9 @@ from django.shortcuts import render, redirect
 def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect | HttpResponsePermanentRedirect):
     """ Vista para manejar los foros """
 
-    if not request.user.is_authenticated:
-        """ Si el usuario no esta autenticado, se redirige al login """
-        return redirect('/login')
+    #if not request.user.is_authenticated:
+        #""" Si el usuario no esta autenticado, se redirige al login """
+        #return redirect('/login')
 
 
     if request.method == 'GET':
@@ -20,7 +20,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
         if entry_id:
             """ Si se pasa un id de entrada, se renderiza el template de foro """
             forum = Entry.objects.filter(id=entry_id)
-            messages = Message.objects.filter(entry_id=entry_id).order_by('date')
+            messages = Message.objects.filter(entry_id=entry_id).order_by('created_at')
             return render(request=request, 
                           template_name='forum.html',
                           context={'forum': forum, 
@@ -28,7 +28,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                                    'form': ForumMessage})
         else:
             """ Si no se pasa un id de entrada, se renderiza el template de foros """
-            forums = Entry.objects.all().order_by('date')
+            forums = Entry.objects.all().order_by('created_at')
             return render(request=request,
                           template_name='forums_main.html',
                           context={'forums': forums, 
