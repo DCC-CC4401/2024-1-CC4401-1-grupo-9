@@ -56,6 +56,10 @@ def register_view(request):
             'form': Register
             })
 
+def profile(request):
+    if request.method == 'GET':
+        return render(request, 'profile.html')
+
 def forgot_password_view(request):
     return render(request, 'forgot-password.html', {
         'form': ForgetPassword
