@@ -21,6 +21,11 @@
     z-index: -1; /* Asegúrate de que esté detrás del contenido */
     pointer-events: none; /* Permite que los elementos sobre la capa sean interactivos */
 }
+
+body{
+    display: flex;
+}
+
 /* Estilos para el formulario de inicio de sesión */
 .content {
     display: flex;

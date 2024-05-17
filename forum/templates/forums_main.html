@@ -1,28 +1,48 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     <title>Forums</title>
 {% endblock %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'styles/forums_main.css' %}">
 {% endblock %}
 
 {% block content %}
-    <div class="forums">
-        <h1>Forums</h1>
-        <h1>Forums</h1>
-        <h1>Este es un test para la pagina principal de foros</h1>
-        <div class="forum">
-            <h2>General</h2>
-            <p>General discussion about anything and everything.</p>
+<div class="forums">
+    <form action="{% url 'forums' %}" method="post" class="form-new-forum">
+        {% csrf_token %}
+        <p> RESUELVE TU DUDA </p> 
+
+        <placeholder> Título </placeholder>
+        <input type="text" name="title" placeholder="Título">
+
+        <placeholder> Cuál es tu duda? </placeholder>
+        <input type="text" name="body" placeholder="Pregunta">
+
+        <button type="submit"> POSTEAR </button>
+    </form>
+
+    <div class="forums-container">
+
+        <div class="filter">
+            <p> Filtros </p>
         </div>
-        <div class="forum">
-            <h2>Python</h2>
-            <p>Discussion about the Python programming language.</p>
-        </div>
-        <div class="forum">
-            <h2>JavaScript</h2>
-            <p>Discussion about the JavaScript programming language.</p>
-        </div>
+
+        {% for entry in forums %}
+        <a class="forum-entry" href="{% url 'forum' entry.id %}">
+            <div class="entry-data">
+                <div> Votos: +5 </div>
+                <div> Respuestas: 10 </div>
+            </div>
+            <div class="entry-content">
+                <div class="entry-title"> {{ entry.title }} </div>
+                <div class="entry-body">  {{ entry.body  }} </div>
+            </div>
+        </a>
+        {% endfor %}
+
     </div>
+</div>
 {% endblock %}

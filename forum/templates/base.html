@@ -4,9 +4,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         
+        {% load static %}
         <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+        {% load static %}
         <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
 
         {% block css %} {% endblock %}
@@ -16,6 +17,7 @@
         <header class="header">
             <div class="logo">
                 <a href="{% url 'home' %}">
+                    {% load static %}
                     <img src="{% static 'images/Logo.png' %}" alt="logo">
                 </a>
             </div>
