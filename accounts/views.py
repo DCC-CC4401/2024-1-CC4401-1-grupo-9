@@ -36,9 +36,6 @@ def register_view(request):
     elif request.method == 'POST':
         print(request.POST)
         form = Register(request.POST)
-        print("valid  "+str(form.is_valid())+"\n")
-        print("errors  "+str(form.errors)+"\n")
-        print("bound   "+str(form.is_bound)+"\n")
         
         #validamos los datos
         if form.is_valid():
