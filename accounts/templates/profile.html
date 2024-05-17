@@ -1,20 +1,27 @@
 {% extends 'bases/base.html' %}
 
-{% load static%}
+{% load static %}
 {% block css %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">
 {% endblock %}
 
 {% block title %}
-    <title>Profile</title>
+    <title>Perfil</title>
 {% endblock %}
 
 {% block content %}
-    <h1>Perfil de "Nombre de estudiante"</h1>
-    <h1>Detalle del Estudiante</h1>
-    <p><strong>Nombre:</strong> {{ estudiante.first_name }} {{ estudiante.last_name }}</p>
-    <p><strong>Email:</strong> {{ estudiante.email }}</p>
-    <h2>Estadísticas</h2>
-    <p><strong>Respuestas Totales:</strong> {{ estudiante.total_answers }}</p>
-    <p><strong>Respuestas Útiles:</strong> {{ estudiante.useful_answers }}</p>
-    <p><strong>Preguntas Totales:</strong> {{ estudiante.total_questions }}</p>
+    <h1>Perfil de "Nombre de Estudiante"</h1>
+    <div class="profile-container">
+        <div class="details">
+            <h2>Detalle del Estudiante</h2>
+            <p><strong>Nombre:</strong> {{ estudiante.first_name }} {{ estudiante.last_name }}</p>
+            <p><strong>Email:</strong> {{ estudiante.email }}</p>
+        </div>
+        <div class="statistics">
+            <h2>Estadísticas</h2>
+            <p><strong>Respuestas Totales:</strong> {{ estudiante.total_answers }}</p>
+            <p><strong>Respuestas Útiles:</strong> {{ estudiante.useful_answers }}</p>
+            <p><strong>Preguntas Totales:</strong> {{ estudiante.total_questions }}</p>
+        </div>
+    </div>
 {% endblock %}
