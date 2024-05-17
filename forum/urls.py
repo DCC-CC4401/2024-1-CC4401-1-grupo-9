@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path('forum', views.forum, name='forums'),
+    path('forum/', views.forum, name='forums'),
     path('forum/<int:entry_id>/', views.forum, name='forum'),
 ]

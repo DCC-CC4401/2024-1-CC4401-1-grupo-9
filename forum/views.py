@@ -10,25 +10,25 @@ from django.shortcuts import render, redirect
 def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect | HttpResponsePermanentRedirect):
     """ Vista para manejar los foros """
 
-    #if not request.user.is_authenticated:
-        #""" Si el usuario no esta autenticado, se redirige al login """
-        #return redirect('/login')
+    if not request.user.is_authenticated:
+        """ Si el usuario no esta autenticado, se redirige al login """
+        return redirect('/login')
 
 
     if request.method == 'GET':
         """ Si el metodo es GET, se renderiza el template correspondiente """
         if entry_id:
             """ Si se pasa un id de entrada, se renderiza el template de foro """
-            forum = Entry.objects.filter(id=entry_id)
-            messages = Message.objects.filter(entry_id=entry_id).order_by('created_at')
+            forum = Entry.objects.filter(id=entry_id).reverse()
+            msgs = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
             return render(request=request, 
                           template_name='forum.html',
                           context={'forum': forum, 
-                                   'messages': messages, 
+                                   'messages': msgs, 
                                    'form': ForumMessage})
         else:
             """ Si no se pasa un id de entrada, se renderiza el template de foros """
-            forums = Entry.objects.all().order_by('created_at')
+            forums = Entry.objects.all().order_by('created_at').reverse()
             return render(request=request,
                           template_name='forums_main.html',
                           context={'forums': forums, 
@@ -43,22 +43,23 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             if form.is_valid():
                 message = form.save(commit=False)
                 message.entry_id = entry_id         ## guardar id de la entrada
-                message.user_id = request.user.id   ## guardar id del usuario
+                #message.user_id = request.user   ## guardar id del usuario
                 message.save()
                 messages.success(request, 'Mensaje subido exitosamente')
-                return redirect('/foro/'+entry_id)
+                return redirect('/forum/'+entry_id)
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
-                return redirect('/foro/'+entry_id)
+                return redirect('/forum/'+entry_id)
 
         else:
             """ Si no se pasa un id de entrada, se procesa el formulario de entrada """
             form = ForumEntry(request.POST)
             if form.is_valid():
                 entrada = form.save(commit=False)
+                #entrada.user_id = request.user
                 entrada.save()
                 messages.success(request, 'Entrada subida exitosamente')
-                return redirect('/foro/')
+                return redirect('/forum/')
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
-                return redirect('/foro/')
+                return redirect('/forum/')
