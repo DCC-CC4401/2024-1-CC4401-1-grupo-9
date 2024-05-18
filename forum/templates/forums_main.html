@@ -27,7 +27,8 @@
     <div class="forums-container">
 
         <div class="filter">
-            <p> Filtros </p>
+            <label for="filter">Filtrar por:</label>
+            <input type="text" placeholder="Buscar">
         </div>
 
         {% for entry in forums %}
@@ -45,4 +46,8 @@
 
     </div>
 </div>
+{% endblock %}
+
+
+{% block js %}
 {% endblock %}
