@@ -3,6 +3,7 @@ from .models import Estudiante
 from .forms import Login, Register, ForgetPassword
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login_view(request):
@@ -15,10 +16,17 @@ def login_view(request):
     elif request.method == 'POST':
         form = Login(request.POST)
         #validamos los datos
-        validacion = True
-        if validacion:
-            #redirigimos al foro (home por mientras)
-            return redirect('/')
+        print(form.is_valid())
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            print(f"El nombre de usuario es {username} ")
+            user = authenticate(request, username=username, password=password)
+            print(user)
+            if user is not None:
+                login(request, user)  # Iniciar la sesión del usuario
+                print(f"Usuario {username} autenticado exitosamente")
+                return redirect('/profile/') 
         else:
             #aviso y que intente de nuevo
             return render(request, 'login.html', {
@@ -56,9 +64,19 @@ def register_view(request):
             'form': Register
             })
 
-def profile(request):
+@login_required
+def profile(request,user_id=None):
+    
     if request.method == 'GET':
-        return render(request, 'profile.html')
+        if user_id:
+            estudiante = Estudiante.objects.get(id = user_id)
+        else:
+            estudiante = request.user
+
+        context = {
+            'estudiante': estudiante,
+        }
+        return render(request, 'profile.html',context)
 
 def forgot_password_view(request):
     return render(request, 'forgot-password.html', {

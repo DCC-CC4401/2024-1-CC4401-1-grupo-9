@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = '/login/'  # Ajusta esta URL según tu configuración
+LOGIN_REDIRECT_URL = '/profile/'  # Ajusta esta URL según tu configuración
+
 
 # Application definition
 
@@ -52,6 +55,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+AUTH_USER_MODEL = 'accounts.Estudiante'
 
 TEMPLATES = [
     {
