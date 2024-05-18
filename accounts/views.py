@@ -65,11 +65,14 @@ def register_view(request):
             })
 
 @login_required
-def profile(request):
+def profile(request,user_id=None):
     
     if request.method == 'GET':
-        estudiante = request.user
-        print(estudiante)
+        if user_id:
+            estudiante = Estudiante.objects.get(id = user_id)
+        else:
+            estudiante = request.user
+
         context = {
             'estudiante': estudiante,
         }
