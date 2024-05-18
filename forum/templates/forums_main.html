@@ -24,25 +24,27 @@
         <button type="submit"> POSTEAR </button>
     </form>
 
-    <div class="forums-container">
+    <div class="forums-and-filter">
 
         <div class="filter">
-            <label for="filter">Filtrar por:</label>
-            <input type="text" placeholder="Buscar">
+            <label for="filter">Filtrar por título:</label>
+            <input id="search-title" type="text" placeholder="Buscar">
         </div>
 
-        {% for entry in forums %}
-        <a class="forum-entry" href="{% url 'forum' entry.id %}">
-            <div class="entry-data">
-                <div> Votos: +5 </div>
-                <div> Respuestas: 10 </div>
-            </div>
-            <div class="entry-content">
-                <div class="entry-title"> {{ entry.title }} </div>
-                <div class="entry-body">  {{ entry.body  }} </div>
-            </div>
-        </a>
-        {% endfor %}
+        <div id="forums-container" class="forums-container">
+            {% for entry in forums %}
+            <a id="forum-entry" class="forum-entry" href="{% url 'forum' entry.id %}">
+                <div class="entry-data">
+                    <div> Votos: +5 </div>
+                    <div> Respuestas: 10 </div>
+                </div>
+                <div class="entry-content">
+                    <div class="entry-title"> {{ entry.title }} </div>
+                    <div class="entry-body">  {{ entry.body  }} </div>
+                </div>  
+            </a>        
+            {% endfor %}
+        </div>  
 
     </div>
 </div>
@@ -50,4 +52,5 @@
 
 
 {% block js %}
+    <script src="{% static 'js/forums_main.js' %}"></script>
 {% endblock %}

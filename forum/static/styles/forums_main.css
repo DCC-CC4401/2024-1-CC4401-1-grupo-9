@@ -1,27 +1,31 @@
+/** main container */
 .forums{
     margin-top: 80px;
     width: 100%;
     height: 100%;
+    gap: 20px;
 
     display: flex;
     flex-direction: row;
 }
 
+/** ===  FORMULARIO === */
 .form-new-forum{
     margin-top: 160px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 10px;
-    margin-right: 80px;
+    margin-left: 50px;
 
-    width: 15%;
+    width: 30%;
     padding: 20px;
     background-color: #BDDBD5;
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
     max-height: 350px;
+    max-width: 300px;
 }
 
 .form-new-forum button{
@@ -32,19 +36,29 @@
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: medium;
-    border: 1px solid #03362c;
+    border: 1px solid #6B9080;
     cursor: pointer;
 }
 
 .form-new-forum button:hover{
-    background-color: #03362c;
+    background-color: #6B9080;
     color: white;
     transform: scale(1.05);
     transition: 0.5s;
 }
 
+.form-new-forum input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    border: 1px solid #03362c;
+}
 
 
+
+/** === FILTER === */
 .filter{
     width: 200px;
     padding: 10px;
@@ -57,7 +71,7 @@
     align-content: center;
     justify-content: center;
 
-    margin-right: 100px;
+    margin-right: 90px;
     padding-left: 2px;
     padding-right: 2px;
     
@@ -79,10 +93,14 @@
     font-size: small;
 }
 
-.forums-container{
+
+
+/** container para las entradas y el filtro */
+.forums-and-filter{
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding-right: 50px;
 
     gap: 30px;
 
@@ -91,7 +109,21 @@
     justify-content: top;
 
     font-family: 'Roboto', sans-serif;
-    margin-right: 25px;
+}
+
+/** container solo de entradas */
+.forums-container{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+
+    gap: 30px;
+
+    margin-top: 5em;
+    align-items:end;
+    justify-content: top;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 .forum-entry{
@@ -109,8 +141,6 @@
     color: black;
 }
 
-/* animation for the forum entry */
-/* increase size when mouse over */
 .forum-entry:hover{
     transform: scale(1.01);
     transition: 0.4s;
