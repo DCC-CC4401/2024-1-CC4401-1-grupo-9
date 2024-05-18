@@ -1,19 +1,15 @@
-from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, HttpRequest
+from django.http import HttpResponseRedirect, HttpResponsePermanentRedirect, HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import Entry, Message
 from .forms import ForumEntry, ForumMessage
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 
-
+#@login_required
 def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect | HttpResponsePermanentRedirect):
     """ Vista para manejar los foros """
-
-    if not request.user.is_authenticated:
-        """ Si el usuario no esta autenticado, se redirige al login """
-        return redirect('/login')
-
 
     if request.method == 'GET':
         """ Si el metodo es GET, se renderiza el template correspondiente """
@@ -63,3 +59,25 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
                 return redirect('/forum/')
+
+
+def api_forums(request: HttpRequest) -> JsonResponse:
+    """ Vista para manejar la API de foros. 
+        Esta vista permite obtener los foros en formato JSON
+    """
+
+    if request.method == 'GET':
+        """ Si el metodo es GET, se obtienen los foros """
+        forums = Entry.objects.all().order_by('created_at').reverse()
+        title = request.GET.get('title', None)
+
+        """ Si se pasa un titulo, se filtran los foros por el titulo """
+        if title:
+            forums = forums.filter(title__icontains=title)
+
+        data = [
+            {'id': forum.id, 'title': forum.title, 'body': forum.body, 'created_at': forum.created_at} 
+            for forum in forums
+        ]
+        
+        return JsonResponse(data, safe=False)

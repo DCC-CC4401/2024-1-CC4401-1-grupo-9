@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Estudiante
 from .forms import Login, Register, ForgetPassword
+from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 
 # Create your views here.
-def login(request):
+def login_view(request):
     if request.method == 'GET':
         #mostramos la pagina
         return render(request, 'login.html', {
@@ -23,34 +25,45 @@ def login(request):
             'form': Login
             })
 
-def register(request):
+def register_view(request):
     if request.method == 'GET':
         #mostramos la página
         return render(request, 'register.html', {
             'form': Register
         })
 
+    
     elif request.method == 'POST':
+        print(request.POST)
         form = Register(request.POST)
+        
         #validamos los datos
-        validacion = True
-        if validacion == True:
-            #acá se agrega un nuevo estudiante a la db
-            Estudiante.objects.create(username = request.POST['username'],
-                                      password = request.POST['password1'],
-                                      rol = "1",
-                                      email = request.POST['email'])
-            #probablemente redirigimos al login
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            messages.success(request, 'Te registraste EXITOsamente')
+            login(request,user)
+            # acá se agrega un nuevo estudiante a la db
+            # Estudiante.objects.create(username = request.POST['username'],
+            #                           password = request.POST['password1'],
+            #                           rol = "1",
+            #                           email = request.POST['email'])
+            # probablemente redirigimos al login
             return redirect('/login/')
         else:
             return render(request, 'register.html', {
             'form': Register
             })
 
-def forgot_password(request):
+def profile(request):
+    if request.method == 'GET':
+        return render(request, 'profile.html')
+
+def forgot_password_view(request):
     return render(request, 'forgot-password.html', {
         'form': ForgetPassword
     })
 
-def home(request):
+def home_view(request):
     return render(request, 'home.html')
