@@ -19,8 +19,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             msgs = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
             return render(request=request, 
                           template_name='forum.html',
-                          context={'entry_id': entry_id,
-                                   'forum': forum, 
+                          context={'forum': forum, 
                                    'messages': msgs, 
                                    'form': ForumMessage})
         else:
@@ -88,7 +87,7 @@ def api_forums(request: HttpRequest) -> JsonResponse:
                 }
             else:
                 data = {}
-                
+
         else:
             """ Si el metodo es GET, se obtienen los foros """
             forums = Entry.objects.all().order_by('created_at').reverse()
