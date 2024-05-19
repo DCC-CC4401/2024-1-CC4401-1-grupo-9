@@ -16,7 +16,7 @@
 .form {
     width: 30%; /* Ajustar el ancho si es necesario */
     padding: 20px;
-    background-color: #CCE3DE;
+    background-color: #7EA091;
     border-radius: 5px;
     margin-top: 5em;
     font-family: 'Roboto', sans-serif;
@@ -42,10 +42,10 @@
     border-radius: 4px;
     background-color: #EAF4F4;
     font-size: large;
-    color: #6B9080;
+    color: #90B6A1;
     margin-top: 0.1em;
     margin-bottom: 0.2em;
-    border-color: #6B9080;
+    border-color: #7e7e7e;
 }
 
 .form-group2 input {
@@ -56,10 +56,10 @@
     border-radius: 4px;
     background-color: #EAF4F4;
     font-size: large;
-    color: #6B9080;
+    color: #90B6A1;
     margin-top: 0.1em;
     margin-bottom: 0.2em;
-    border-color: #6B9080;
+    border-color: #7e7e7e;
 }
 
 .form-group input::placeholder {
@@ -67,13 +67,18 @@
     font-size: large;
 }
 
+.form-group2 input::placeholder {
+    color: #6B9080;
+    font-size: large;
+}
+
 .form h2 {
     margin-left: 10px;
-    color: #6B9080;
+    color: #F6FFF8;
 }
 
 .form h4 {
-    color: #6B9080;
+    color: #F6FFF8;
     margin-bottom: 0.4em;
 }
 
@@ -82,9 +87,9 @@
     width: 55%;
     height: 3.1em;
     padding: 10px;
-    background-color: #6B9080;
+    background-color: #F6FFF8;
     border: none;
-    color: #fff;
+    color: #000000;
     border-radius: 5px;
     cursor: pointer;
     margin: 0 auto; /* Centramos horizontalmente */
@@ -94,12 +99,12 @@
 }
 
 .form button[type="submit"]:hover {
-    background-color: #4D6E63;
+    background-color: #BDDBD4;
 }
 
 /* Estilos para los enlaces */
 .form a {
-    color: #6B9080;
+    color: #F6FFF8;
 }
 
 .form a:hover {

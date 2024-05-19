@@ -1,6 +1,6 @@
 /** main container */
 .forums{
-    margin-top: 80px;
+    margin-top: 60px;
     width: 100%;
     height: 100%;
     gap: 20px;
@@ -11,25 +11,39 @@
 
 /** ===  FORMULARIO === */
 .form-new-forum{
-    margin-top: 160px;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-left: 50px;
 
-    width: 30%;
+    width: 40%;
     padding: 20px;
-    background-color: #BDDBD5;
+    background-color: #F6FFF8;
     border-radius: 5px;
     font-family: 'Roboto', sans-serif;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-
-    max-height: 350px;
-    max-width: 300px;
 }
 
-.form-new-forum button{
-    width: 100%;
+.form-new-forum h2 {
+    text-align: center; /* Centra el texto del h2 */
+    margin-top: 20px; /* Ajusta este margen para mover el h2 hacia abajo */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
+    width: 100%; /* Asegura que los grupos ocupen el 100% del ancho del formulario */
+}
+
+.form-group label {
+    margin-bottom: 5px; /* Espacio entre el label y el input */
+    margin-left: 75px;
+    text-align: left;
+}
+
+.form-new-forum button {
+    width: 50%; /* Ajusta el ancho para hacerlo más pequeño */
     padding: 10px;
     background-color: #F2F2F2;
     border: none;
@@ -38,40 +52,51 @@
     font-size: medium;
     border: 1px solid #6B9080;
     cursor: pointer;
+    align-self: center; /* Centra el botón dentro del formulario */
 }
 
-.form-new-forum button:hover{
+.form-new-forum button:hover {
     background-color: #6B9080;
     color: white;
     transform: scale(1.05);
     transition: 0.5s;
 }
 
-.form-new-forum input{
-    width: 100%;
+.form-new-forum input {
+    width: 70%;
     border-radius: 5px;
     padding: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: medium;
     border: 1px solid #03362c;
+    align-self: center; /* Centra los inputs dentro del formulario */
 }
 
+.form-new-forum textarea {
+    width: 70%;
+    height: 150px;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    border: 1px solid #03362c;
+    resize: none;
+    align-self: center; /* Centra los inputs dentro del formulario */
+}
 
 
 /** === FILTER === */
 .filter{
-    width: 200px;
+    width: 350px;
     padding: 10px;
 
-    background-color: #BDDBD5;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    background-color: #88a799;
     border-radius: 5px;
 
     display: flex;
     align-content: center;
     justify-content: center;
 
-    margin-right: 90px;
     padding-left: 2px;
     padding-right: 2px;
     
@@ -86,6 +111,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: medium;
     border: 1px solid #080943;
+    margin-right: 10px;
 }
 
 .filter label{
@@ -93,16 +119,14 @@
     font-size: small;
 }
 
-
-
 /** container para las entradas y el filtro */
 .forums-and-filter{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     padding-right: 50px;
 
-    gap: 30px;
+    gap: 20px;
 
     margin-top: 5em;
     align-items:end;
@@ -119,7 +143,7 @@
 
     gap: 30px;
 
-    margin-top: 5em;
+    margin-top: 0em;
     align-items:end;
     justify-content: top;
 
@@ -133,16 +157,15 @@
     flex-direction: row;
     gap: 15px;
     padding: 20px;
-    background-color: #BDDBD5;
-    border-radius: 5px;
+    background-color: #88a799;
+    border-radius: 3px;
 
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     text-decoration: none;
     color: black;
 }
 
 .forum-entry:hover{
-    transform: scale(1.01);
+    transform: scale(1.009);
     transition: 0.4s;
 }
 
@@ -152,6 +175,7 @@
     flex-direction: column;
     gap: 10px;
     font-size: small;
+    margin-top: 4px;
 }
 
 .entry-content{

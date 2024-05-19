@@ -8,7 +8,7 @@
 
 .forgot {
     margin-left: auto;
-    color: #6B9080;
+    color: #F6FFF8;
 }
  .register {
     display: block;
@@ -29,13 +29,13 @@
 
 /* Estilo del checkbox cuando está marcado */
 .remember-forgot input[type="checkbox"]:checked {
-    background-color: #6B9080; /* Cambia el color de fondo cuando está marcado */
-    border-color: #6B9080; /* Cambia el color del borde cuando está marcado */
+    background-color: #24423B; /* Cambia el color de fondo cuando está marcado */
+    border-color: #24423B; /* Cambia el color del borde cuando está marcado */
 }
 
 /* Estilo del texto del checkbox */
 .remember-forgot label {
-    color: #6B9080; /* Color del texto */
+    color: #F6FFF8; /* Color del texto */
     font-size: medium; /* Tamaño del texto */
     cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
 }

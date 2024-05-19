@@ -1,9 +1,9 @@
 
 .header {
     box-sizing: border-box;
-    background-color: #BDDBD5;
+    background-color: #6B9080;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     height: 85px;
     padding: 5px 10%;
@@ -28,6 +28,7 @@
 }
 .header .logo{
     cursor: pointer;
+    margin-right: auto;
 }
 
 .header .nav-links {
@@ -36,35 +37,33 @@
     align-items: center;
 }
 
-.header .nav-links li {
-    margin-left: 20px;
-}
-
 .header .nav-links li a {
     text-decoration: none;
-    color: #333;
+    color: #F6FFF8;
     font-size: 16px;
+    margin-right: 25px;
 }
 
 .header .nav-links li a:hover {
-    color: #555;
+    color: #000000;
 }
 
 .header .btn button {
     font-weight: 700;
-    color: #fff;
+    color: #000000;
     padding: 15px 35px;
-    background-color: #6B9080;
+    background-color: #F6FFF8;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     font-size: 15px;
     margin-right: 10px;
+    margin-left: 5px;
 }
 
 .header .btn button:hover {
-    background-color: #6B9080;
-    color: #fff;
+    background-color: #F6FFF8;
+    color: #000000;
     transform : scale(1.1);
 }
