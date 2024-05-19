@@ -13,21 +13,26 @@
 <div class="forums">
     <form action="{% url 'forums' %}" method="post" class="form-new-forum">
         {% csrf_token %}
-        <p> RESUELVE TU DUDA </p> 
-
-        <placeholder> Título </placeholder>
-        <input type="text" name="title" placeholder="Título">
-
-        <placeholder> Cuál es tu duda? </placeholder>
-        <input type="text" name="body" placeholder="Pregunta">
-
-        <button type="submit"> POSTEAR </button>
+        <h2 class="form-title">RESUELVE TU DUDA</h2>
+    
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input type="text" id="title" name="title" placeholder="Título">
+        </div>
+    
+        <div class="form-group">
+            <label for="body">Cuál es tu duda?</label>
+            <textarea type="text" id="body" name="body" placeholder="Pregunta"></textarea>
+        </div>
+    
+        <button type="submit">POSTEAR</button>
     </form>
+    
 
     <div class="forums-and-filter">
 
         <div class="filter">
-            <label for="filter">Filtrar por título:</label>
+            <label for="filter">Filtra por título:</label>
             <input id="search-title" type="text" placeholder="Buscar">
         </div>
 
