@@ -3,4 +3,3 @@ __pycache__/
 
 migrations/
 db.sqlite3
-__init__.py
