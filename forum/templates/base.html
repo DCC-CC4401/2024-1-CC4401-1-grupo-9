@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles/base_foro.css' %}">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
+        
+
+        {% block css %} {% endblock %}
+        {% block title %} {% endblock %}
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    {% load static %}
+                    <img src="{% static 'images/Logo.png' %}" alt="logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{% url 'forums' %}">FORUM</a></li>
+                    <li><a href="{% url 'home' %}">MATERIALS</a></li>
+                </ul>
+            </nav>
+            <a href="{% url 'home' %}" class="btn"><button>Profile</button></a>
+        </header>
+        
+        {%block content%}
+        {%endblock%}
+
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
+
