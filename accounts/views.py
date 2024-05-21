@@ -26,7 +26,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)  # Iniciar la sesión del usuario
                 print(f"Usuario {username} autenticado exitosamente")
-                return redirect('/profile/') 
+                return redirect('/forum/') 
         else:
             #aviso y que intente de nuevo
             return render(request, 'login.html', {
