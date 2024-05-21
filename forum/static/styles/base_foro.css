@@ -2,25 +2,6 @@
     background-color: #F6FFF8; /* Color de fondo */
 }
 
-:root {
-    background-image: url('../images/fondo.png');
-    background-size: cover; /* Otras opciones: contain, auto, 100% 100%, etc. */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: center; /* Centra la imagen */
-    height: 100%;
-}
-
-:root::before {
-    content: '';
-    position: fixed; /* Usa fixed o absolute dependiendo de tus necesidades */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Blanco con 50% de opacidad */
-    z-index: -1; /* Asegúrate de que esté detrás del contenido */
-    pointer-events: none; /* Permite que los elementos sobre la capa sean interactivos */
-}
 /* Estilos para el formulario de inicio de sesión */
 .content {
     display: flex;
@@ -38,7 +19,6 @@
     margin-top: 5em;
     font-family: 'Roboto', sans-serif;
     margin-right: 10%;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 .form-group input {
@@ -56,6 +36,25 @@
 }
 
 .form-group input::placeholder {
+    color: #6B9080;
+    font-size: large;
+}
+
+.form-group textarea {
+    width: 95%;
+    height: 2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #90B6A1;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #F6FFF8;
+}
+
+.form-group textarea::placeholder {
     color: #6B9080;
     font-size: large;
 }
