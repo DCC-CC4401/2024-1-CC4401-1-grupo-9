@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 
-#@login_required
+@login_required
 def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect | HttpResponsePermanentRedirect):
     """ Vista para manejar los foros """
 
@@ -39,7 +39,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             if form.is_valid():
                 message = form.save(commit=False)
                 message.entry = Entry.objects.filter(id=entry_id)
-                #message.user = request.user
+                message.user = request.user
                 message.save()
                 messages.success(request, 'Mensaje subido exitosamente')
                 return redirect('/forum/'+entry_id)
@@ -52,7 +52,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             form = ForumEntry(request.POST)
             if form.is_valid():
                 entrada = form.save(commit=False)
-                #entrada.user = request.user
+                entrada.user = request.user
                 entrada.save()
                 messages.success(request, 'Entrada subida exitosamente')
                 return redirect('/forum/'+str(entrada.id))
