@@ -6,15 +6,17 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-
+""" 
+Vista para manejar los foros
+"""
 @login_required
 def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect | HttpResponsePermanentRedirect):
-    """ Vista para manejar los foros """
+
 
     if request.method == 'GET':
-        """ Si el metodo es GET, se renderiza el template correspondiente """
+        # Si el metodo es GET, se renderiza el template correspondiente 
         if entry_id:
-            """ Si se pasa un id de entrada, se renderiza el template de foro """
+            # Si se pasa un id de entrada, se renderiza el template de foro 
             forum = Entry.objects.filter(id=entry_id).reverse()
             msgs = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
             return render(request=request, 
@@ -23,7 +25,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                                    'messages': msgs, 
                                    'form': ForumMessage})
         else:
-            """ Si no se pasa un id de entrada, se renderiza el template de foros """
+            # Si no se pasa un id de entrada, se renderiza el template de foros 
             forums = Entry.objects.all().order_by('created_at').reverse()
             return render(request=request,
                           template_name='forums_main.html',
@@ -31,10 +33,10 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                                    'form': ForumEntry})
 
     elif request.method == 'POST':
-        """ Si el metodo es POST, se procesa el formulario correspondiente """
+        # Si el metodo es POST, se procesa el formulario correspondiente 
 
         if entry_id:
-            """ Si se pasa un id de entrada, se procesa el formulario de mensaje """
+            # Si se pasa un id de entrada, se procesa el formulario de mensaje 
             form = ForumMessage(request.POST)
             if form.is_valid():
                 message = form.save(commit=False)
@@ -48,7 +50,7 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                 return redirect('/forum/'+entry_id)
 
         else:
-            """ Si no se pasa un id de entrada, se procesa el formulario de entrada """
+            # Si no se pasa un id de entrada, se procesa el formulario de entrada 
             form = ForumEntry(request.POST)
             if form.is_valid():
                 entrada = form.save(commit=False)
@@ -59,17 +61,17 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
                 return redirect('/forum/')
-
-
+ 
+"""
+Vista para manejar la API de foros. 
+Esta vista permite obtener los foros en formato JSON
+"""
 def api_forums(request: HttpRequest) -> JsonResponse:
-    """ Vista para manejar la API de foros. 
-        Esta vista permite obtener los foros en formato JSON
-    """
 
     if request.method == 'GET':
         entry_id = request.GET.get('entry_id', None)
         if entry_id:
-            """ Si se pasa un id de entrada, se obtienen los mensajes """
+            # Si se pasa un id de entrada, se obtienen los mensajes 
             forum = Entry.objects.filter(id=entry_id)
             if (forum):
                 messages = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
@@ -89,11 +91,11 @@ def api_forums(request: HttpRequest) -> JsonResponse:
                 data = {}
 
         else:
-            """ Si el metodo es GET, se obtienen los foros """
+            #Si el metodo es GET, se obtienen los foros
             forums = Entry.objects.all().order_by('created_at').reverse()
             title = request.GET.get('title', None)
 
-            """ Si se pasa un titulo, se filtran los foros por el titulo """
+            #Si se pasa un titulo, se filtran los foros por el titulo 
             if title:
                 forums = forums.filter(title__icontains=title)
 
