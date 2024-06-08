@@ -66,22 +66,15 @@
 
     {% for msg in messages %}
         <div class="answer">
-            <div class="answer-data">
-                <div class="answer-author-time">
-                    <p> Respondido por {{ msg.user }}, {{ msg.created_at }} </p>
-                </div>
-                <div class="answer-votes">
-                    <p> Votos: +5 </p>
-                </div>
-            </div>
+
             <div class="answer-content">
-                <div class="answer-body"> {{ msg.message }} </div>
-                <div class="answer-buttons">
-                    <button class="downvote"> Downvote </button>
-                    <span class="votes-counter"> +5 </span>
-                    <button class="upvote"> Upvote </button>
-                </div>
+                <div class="answer-body"> <p>{{ msg.message }} </p></div>
             </div>
+
+            <div class="answer-data">
+                <div class="answer-author-time"> <p>Respondido por {{ msg.user }}, {{ msg.created_at }} </p></div>
+            </div>
+
         </div>
     {% endfor %}
 
