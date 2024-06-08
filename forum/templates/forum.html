@@ -60,7 +60,7 @@
 
     <form action="{% url 'forum' forum.id %}" method="POST" class="answer-form">
         {% csrf_token %}
-        {{ form.message }}
+        <textarea name="message" type="text" placeholder="Respuesta"></textarea>
         <button class="answer-submit"> Enviar </button>
     </form>
 
