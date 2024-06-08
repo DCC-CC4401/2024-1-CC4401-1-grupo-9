@@ -15,11 +15,11 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponse | HttpRes
         # Si el metodo es GET, se renderiza el template correspondiente 
         if entry_id:
             # Si se pasa un id de entrada, se renderiza el template de foro 
-            forum = Entry.objects.filter(id=entry_id).reverse()
-            msgs = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
+            entry = Entry.objects.filter(id=entry_id).first()
+            msgs = Message.objects.filter(entry_id=entry).order_by('created_at').reverse()
             return render(request=request, 
                           template_name='forum.html',
-                          context={'forum': forum, 
+                          context={'forum': entry, 
                                    'messages': msgs, 
                                    'form': ForumMessage})
         else:
@@ -38,14 +38,14 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponse | HttpRes
             form = ForumMessage(request.POST)
             if form.is_valid():
                 message = form.save(commit=False)
-                message.entry = Entry.objects.filter(id=entry_id)
+                message.entry = Entry.objects.filter(id=entry_id).first()
                 message.user = request.user
                 message.save()
                 messages.success(request, 'Mensaje subido exitosamente')
-                return redirect('/forum/'+entry_id)
+                return redirect(f'/forum/{entry_id}')
             else:
                 ## TODO: Modificar esto para manejar el caso en el que no es valido
-                return redirect('/forum/'+entry_id)
+                return redirect(f'/forum/{entry_id}')
 
         else:
             # Si no se pasa un id de entrada, se procesa el formulario de entrada 

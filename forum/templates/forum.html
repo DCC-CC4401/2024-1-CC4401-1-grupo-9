@@ -15,10 +15,11 @@
             <div id="entry-content" class="entry-content">
                 <div id="entry-data" class="entry-data">
                     <div id="entry-title" class="entry-title">
+                        {{ forum.title }}
                     </div>
                     <div id="entry-author-views" class="entry-author-views">
                         <div id="entry-author-time" class="entry-author-time">
-                            <p> Subido por Usuario Genérico hace 13 horas </p>
+                            <p> Subido por {{ forum.user }}, {{ forum.created_at }} </p>
                         </div>
                         <div id="entry-views" class="entry-views">
                             <p> Views: 15 </p>
@@ -49,12 +50,41 @@
                 </div>
             </div>
         </div>
+
         <div id="sorter-answers" class="sorter-answers">
             <p id="num-answers"></p>
             <button id="sorter" class="sorter"> Ordenar Por </button>
         </div>
         <div id="answer-container" class="answer-container"></div>    
     </div>
+
+    <form action="{% url 'forum' forum.id %}" method="POST" class="answer-form">
+        {% csrf_token %}
+        {{ form.message }}
+        <button class="answer-submit"> Enviar </button>
+    </form>
+
+    {% for msg in messages %}
+        <div class="answer">
+            <div class="answer-data">
+                <div class="answer-author-time">
+                    <p> Respondido por {{ msg.user }}, {{ msg.created_at }} </p>
+                </div>
+                <div class="answer-votes">
+                    <p> Votos: +5 </p>
+                </div>
+            </div>
+            <div class="answer-content">
+                <div class="answer-body"> {{ msg.message }} </div>
+                <div class="answer-buttons">
+                    <button class="downvote"> Downvote </button>
+                    <span class="votes-counter"> +5 </span>
+                    <button class="upvote"> Upvote </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
 
 {% block js %}
