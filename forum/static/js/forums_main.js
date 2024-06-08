@@ -1,3 +1,4 @@
+
 /** construye consulta */
 const buildQueryString = (params) => {
     return Object.keys(params)
@@ -6,25 +7,16 @@ const buildQueryString = (params) => {
 };
 
 
-/** obtiene los foros */
-const fetch_forums = async (params) => {
-    try{
-        const url = `/api/forums?${buildQueryString(params)}`;
-        const response = await fetch(url);
-        return response.json();
-    } catch (error) {
-        throw new Error('Error al obtener los foros');
-    }
-};
-
 let params = {};
 /** escucha el evento de cambio de titulo */
-document.getElementById('search-title').addEventListener('input', (event) => {
-    let forums = document.getElementById('forums-container');
+document.getElementById('search-title').addEventListener('input', async (event) => {
+    const forums = document.getElementById('forums-container');
     params.title = event.target.value;
 
-    /** get all the forums */
-    fetch_forums(params).then((data) => {
+    const url = `/api/forums?${buildQueryString(params)}`;
+    fetch(url)
+        .then(response => response.json())
+        .then((data) => {
         /** clean the forums innerhtml */
         forums.innerHTML = '';
         data.forEach(element => {
@@ -41,8 +33,15 @@ document.getElementById('search-title').addEventListener('input', (event) => {
                     </div>  
                 </a>`;
         });
-
     });
+});
 
+
+
+const textArea = document.getElementById("entry-form-body");
+textArea.addEventListener("input", _ => {
+    textArea.style.height = "auto";
+    const height = Math.max(textArea.scrollHeight, 150);
+    textArea.style.height = `${height}px`;
 });
 
