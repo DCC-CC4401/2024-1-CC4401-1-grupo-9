@@ -1,2 +1,8 @@
 venv/
-__pycache__
+accounts/__pycache__
+accounts/migrations
+material/__pycache__
+material/migrations
+forum/__pycache__
+froum/migrations
+config/__pycache__
