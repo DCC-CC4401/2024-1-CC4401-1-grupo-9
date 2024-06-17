@@ -8,6 +8,9 @@ class Course(models.Model):
     """
     name  = models.CharField(max_length=50)
 
+    def __str__(self) -> str:
+        return self.name
+
 
 class Material(models.Model):
     """ Material:
@@ -17,7 +20,7 @@ class Material(models.Model):
         - course: Ramo del material
     """
     name  = models.CharField(max_length=50)
-    path  = models.CharField(max_length=50)
+    file  = models.FileField(upload_to='material/static/Documents')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self) -> str:

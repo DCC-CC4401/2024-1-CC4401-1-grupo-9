@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from material.models import Course, Material
+from .forms import MaterialForm
 
-
-def material(request, material_id: int = None):
+def material(request, material_id = None):
     """ View para los materiales.
 
         GET: 
@@ -13,6 +13,7 @@ def material(request, material_id: int = None):
     if request.method == "GET":
         ## Renderizar pagina de Materiales
         if material_id is None:
+            print("1")
             materials = Material.objects.all()
             return render(
                 request=request, 
@@ -21,9 +22,32 @@ def material(request, material_id: int = None):
 
         ## Renderizar pagina de un Material
         else:
-            materials = Material.objects.filter(id=material_id)
+            print(2)
+            material = Material.objects.get(id=material_id)
+            print(material.file)
             return render(
                 request=request, 
                 template_name='material.html', 
-                context={"materials": materials})
+                
+                context={"material": material})
+        
+def subirMaterial(request):
+    """ View para subir materiales.
+
+        GET: 
+        Obtiene el formulario para subir un nuevo material
+
+        POST:
+        Permite subir un archivo PDF y guardarlo en la base de datos.
+    """
+    if request.method == "GET":
+        return render(request, 'material_upload.html', {'form': MaterialForm})
+    
+    elif request.method == "POST":
+        form = MaterialForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('material')  # Redirigir a la página de materiales
+        else:
+            return render(request, 'material_upload.html', {'form': form})
 

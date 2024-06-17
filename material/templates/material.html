@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+Visualizar material
+{% endblock %}
+
+{% block content %}
+<h1> Ver PDF </h1>
+{% if material %}
+    <h2>{{ material.name }}</h2>
+    <embed src="/static/Documents/pdfprueba.pdf" width="80%" height="600px" type="application/pdf">
+{% else %}
+    <p>No se encontró el material solicitado.</p>
+{% endif %}
+{% endblock %}
