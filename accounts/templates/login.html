@@ -19,7 +19,7 @@
     <div class="form">
         <form action="" method="POST">
             {% csrf_token %}
-            <h2>Sign In</h2>
+            <h2>Inicia Sesión</h2>
             <div class="form-group">
                 {{ form.username }}
             </div>
@@ -29,14 +29,14 @@
         
             <div class="remember-forgot">
                 <input type="checkbox" name="remember" id="remember"> 
-                <label for="remember">Remember me</label>
-                <a href="/forgot-password" class="forgot">Forgot password?</a>
+                <label for="remember">Recuérdame</label>
+                <a href="/forgot-password" class="forgot">¿Olvidaste tu contraseña?</a>
             </div>    
     
-            <button type="submit" name="submit">Sign In</button>
+            <button type="submit" name="submit">Iniciar Sesión</button>
         
             <div class="links">
-                <a href="/register">Not a member? Sign Up</a>
+                <a href="/register">¿Aún no tienes una cuenta? Registrate</a>
             </div>
         </form>
     </div>
