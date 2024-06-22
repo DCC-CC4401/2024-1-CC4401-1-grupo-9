@@ -29,7 +29,7 @@
     border-radius: 4px;
     background-color: #EAF4F4;
     font-size: large;
-    color: #90B6A1;
+    color: #000000;
     margin-top: 0.1em;
     margin-bottom: 0.2em;
     border-color: #F6FFF8;
@@ -48,7 +48,7 @@
     border-radius: 4px;
     background-color: #EAF4F4;
     font-size: large;
-    color: #90B6A1;
+    color: #000000;
     margin-top: 0.1em;
     margin-bottom: 0.2em;
     border-color: #F6FFF8;
@@ -68,7 +68,7 @@
     margin-bottom: 0.4em;
 }
 
-.form button[type="submit"] {
+.form button {
     display: block; /* Cambiamos a un elemento de bloque */
     width: 55%;
     height: 3.1em;
@@ -76,7 +76,7 @@
     background-color: #F6FFF8;
     border: none;
     color: #000000;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     margin: 0 auto; /* Centramos horizontalmente */
     font-size:medium;
@@ -84,7 +84,7 @@
     margin-top: 1.5em;
 }
 
-.form button[type="submit"]:hover {
+.form button:hover {
     background-color: #BDDBD4;
 }
 
