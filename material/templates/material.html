@@ -1,15 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}
-Visualizar material
-{% endblock %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'styles/material.css' %}"> {% endblock %}
+{% block title %} Visualizar material {% endblock %}
 
 {% block content %}
-<h1> Ver PDF </h1>
-{% if material %}
-    <h2>{{ material.name }}</h2>
-    <embed src="{{material.file.url}}" width="80%" height="600px" type="application/pdf">
-{% else %}
-    <p>No se encontró el material solicitado.</p>
-{% endif %}
+<div class="container">
+
+    {% if material %}
+    <div class="material">
+        <div class="title"> >{{material.course}} > {{ material.name }} </div>
+        <embed src="{{material.file.url}}" type="application/pdf" class="pdf">
+    </div>
+
+    <div class="forum">
+        <div class="title"> PUBLICA TU DUDA O COMENTARIO </div>
+        <textarea class="comentario"></textarea>
+        <button> POSTEAR </button>
+
+        <div class="comments">
+            <div class="comment">
+                <div class="text">Alguno cacha como se hace la p2.c? la intenté hacer pero no me resultó, llegue hasta el paso donde me queda x-2 > x ^ 2...</div>
+                <div class="response-button"> Responder </div>
+            </div>
+            <div class="comment">
+                <div class="text"> Jajajaja la p1.d salió en el control y no la anoté :( </div>
+                <div class="response-button"> Responder </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% else %}
+        <div class="not-found"> No se encontró el material solicitado. </div>
+    {% endif %}
+
+</div>
+
 {% endblock %}

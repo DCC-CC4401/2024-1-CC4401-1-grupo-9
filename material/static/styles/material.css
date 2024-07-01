@@ -1,0 +1,114 @@
+
+.container {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: row;
+}
+
+.container .material {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding: 20px;
+
+
+    .title {
+        padding-bottom: 15px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px;
+        font-style: italic;
+    }
+
+    .pdf {
+        width: 100%;
+        height: 600px;
+    }
+}
+
+.container .forum {
+    width: 40%;
+    padding: 20px;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        width: 200px;
+        padding-bottom: 15px;
+    }
+
+    textarea {
+        width: 80%;
+        height: 200px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    button:hover{
+        background-color: #5B7C74;
+        scale: 1.05;
+        transition: 0.3s;
+    }
+
+    button {
+        width: 80%;
+        padding: 10px;
+        background-color: #6B9080;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .comments {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+
+        .comment {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+            background-color: #96b9aa;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+
+            .text {
+                font-size: 14px;
+            }
+
+            .response-button {
+                display: flex;
+                justify-content: end;
+                width: 100%;
+                background-color: none;
+                cursor: pointer;
+                text-decoration: underline;
+                font-family: Arial, sans-serif;
+                font-size: 12px;
+            }
+            .response-button:hover {
+                font-weight: bold;
+            }
+            
+        }
+    }
+
+}
+
+.not-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(107, 0, 0);
+}
