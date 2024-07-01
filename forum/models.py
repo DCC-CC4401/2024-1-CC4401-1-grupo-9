@@ -39,3 +39,15 @@ class Message(models.Model):
 
     def __str__(self):
         return f"Mensaje en {self.entry_id}"
+    
+class Stats(models.Model):
+    user = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE, null=True, blank=True)
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, null=True, blank=True)
+    vote = models.BooleanField(default=False)  # True for upvote, False for downvote
+
+    class Meta:
+        unique_together = ('user', 'entry', 'message')
+
+    def __str__(self):
+        return f"Stats de {self.user_id} en entrada {self.entry_id} o mensaje {self.message_id}"
