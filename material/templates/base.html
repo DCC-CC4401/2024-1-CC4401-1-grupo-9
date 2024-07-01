@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
 
         {% block css %} {% endblock %}
-        {% block title %} {% endblock %}
+        <title>{% block title %} {% endblock %}</title>
     </head>
     <body>
         <header class="header">
