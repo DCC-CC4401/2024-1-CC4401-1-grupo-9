@@ -1,8 +1,4 @@
 venv/
-accounts/__pycache__
-accounts/migrations
-material/__pycache__
-material/migrations
-forum/__pycache__
-froum/migrations
-config/__pycache__
+__pycache__/
+migrations/
+db.sqlite3
