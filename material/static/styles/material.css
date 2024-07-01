@@ -10,19 +10,18 @@
     flex-direction: column;
     width: 60%;
     padding: 20px;
+}
 
+.container .material .title {
+    padding-bottom: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    font-style: italic;
+}
 
-    .title {
-        padding-bottom: 15px;
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 18px;
-        font-style: italic;
-    }
-
-    .pdf {
-        width: 100%;
-        height: 600px;
-    }
+.container .material .pdf {
+    width: 100%;
+    height: 600px;
 }
 
 .container .forum {
@@ -32,75 +31,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
 
-    .title {
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        width: 200px;
-        padding-bottom: 15px;
-    }
+.container .forum .title {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    width: 200px;
+    padding-bottom: 15px;
+}
 
-    textarea {
-        width: 80%;
-        height: 200px;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
+.container .forum textarea {
+    width: 80%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
 
-    button:hover{
-        background-color: #5B7C74;
-        scale: 1.05;
-        transition: 0.3s;
-    }
+.container .forum button:hover {
+    background-color: #5B7C74;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
 
-    button {
-        width: 80%;
-        padding: 10px;
-        background-color: #6B9080;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+.container .forum button {
+    width: 80%;
+    padding: 10px;
+    background-color: #6B9080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-    .comments {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 40px;
+.container .forum .comments {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
 
-        .comment {
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            width: 100%;
-            background-color: #96b9aa;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
+.container .forum .comments .comment {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    background-color: #96b9aa;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
-            .text {
-                font-size: 14px;
-            }
+.container .forum .comments .comment .text {
+    font-size: 14px;
+}
 
-            .response-button {
-                display: flex;
-                justify-content: end;
-                width: 100%;
-                background-color: none;
-                cursor: pointer;
-                text-decoration: underline;
-                font-family: Arial, sans-serif;
-                font-size: 12px;
-            }
-            .response-button:hover {
-                font-weight: bold;
-            }
-            
-        }
-    }
+.container .forum .comments .comment .response-button {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    background-color: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
 
+.container .forum .comments .comment .response-button:hover {
+    font-weight: bold;
 }
 
 .not-found {
