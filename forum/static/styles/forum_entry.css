@@ -8,6 +8,7 @@
     width: 90%;
     background-color: #BFD3C8;
     padding: 2em;
+    border-radius: 15px;
 }
 
 .entry-content{
@@ -15,32 +16,72 @@
     margin-left: auto;
     margin-right: auto;
     font-family: 'Roboto', sans-serif;
-
+    margin-bottom: 25px;
 }
 
+.entry-body{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+    gap: 0.5em;
+    color: #000000;
+    padding: 10px 25px;
+    background-color: #F6FFF8;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.entry-title{
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.entry-stuff{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .entry-author-views{
     display: flex;
     justify-content: space-between;
     font-size: .85em;
 }
 
+.entry-author{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+}
+
+.entry-author-views p{
+    margin: 0;
+}
+
 .entry-answers-votes{
     display: flex;
-    flex-direction: row;
+    align-items: flex-end;
+    flex-direction: column;
     font-size: .85em;
-    gap: 1em;
+    gap: 0;
+}
+
+.entry-answers-votes p{
+    align-self: center;
+    margin: 0;
 }
 
 .tags{
     display: flex;
     flex-direction: row;
     font-size: .9em;
-    gap: .35em;
+    gap: .5em;
     margin-top: .2em;
 }
 
 .tags div {
-    background-color: #F6FFF8;
+    align-items: center;
+    background-color: #ececec;
     padding: .5em;
     border-radius: 5px;
 }
@@ -49,6 +90,52 @@
     display: flex;
     flex-direction: row;
     margin-top: 2em;
+    gap: 0.6em;
+    font-weight: 700;
+    color: #000000;
+    font-size: 15px;
+}
+
+.entry-buttons button{
+    cursor: pointer;
+    font-weight: 300;
+    color: #000000;
+    padding: 15px 35px;
+    background-color: #F6FFF8;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+}
+
+.entry-buttons span{
+    font-weight: 700;
+    color: #000000;
+    padding: 15px 35px;
+    background-color: #F6FFF8;
+    border-radius: 15px;
+    transition: all 0.3s ease 0s;
+    font-size: 15px;
+}
+
+.downvote:hover {
+    background-color: #b84936;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.upvote:hover {
+    background-color: #6B9080;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.answer-button:hover {
+    background-color: #5f6362;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 
 .answer-button{
