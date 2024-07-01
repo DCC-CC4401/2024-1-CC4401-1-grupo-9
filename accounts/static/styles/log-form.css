@@ -1,0 +1,41 @@
+/* styles/login.css */
+
+.remember-forgot {
+    display: flex;
+    align-items: center;
+    margin-top: 1.1em;
+}
+
+.forgot {
+    margin-left: auto;
+    color: #F6FFF8;
+}
+ .register {
+    display: block;
+    text-align: center;
+ }
+
+ /* CSS para estilizar la checkbox */
+.remember-forgot input[type="checkbox"] {
+    appearance: none; /* Oculta la apariencia por defecto */
+    width: 20px; /* Ajusta el tamaño deseado */
+    height: 20px; /* Ajusta el tamaño deseado */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 4px; /* Borde redondeado */
+    background-color: #EAF4F4; /* Color de fondo */
+    margin-right: 5px; /* Espacio entre el checkbox y el texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el checkbox */
+}
+
+/* Estilo del checkbox cuando está marcado */
+.remember-forgot input[type="checkbox"]:checked {
+    background-color: #24423B; /* Cambia el color de fondo cuando está marcado */
+    border-color: #24423B; /* Cambia el color del borde cuando está marcado */
+}
+
+/* Estilo del texto del checkbox */
+.remember-forgot label {
+    color: #F6FFF8; /* Color del texto */
+    font-size: medium; /* Tamaño del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
+}
