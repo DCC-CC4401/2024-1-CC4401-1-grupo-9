@@ -1,55 +1,54 @@
 <!-- templates/home.html -->
 {% extends "base.html" %}
 
-{% block title %}
-Material
-{% endblock %}
+{% block title %} Material {% endblock %}
 
-{% block css %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/materials.css' %}">
-{% endblock %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'styles/materials_main.css' %}"> {% endblock %}
 
 {% block content %}
 <div class="main-container">
-    
-    <div class="filters-container">
-        <div class="filter"> Filtro 1 </div>
-        <div class="filter"> Filtro 2 </div>
-        <div class="filter"> Filtro 3 </div>
+
+    <div class="materials-container"> 
+
+        <div class="course-title"> > Introducción al cálculo </div>
+
+        <div class="filters">
+            <div class="filter">
+                <div class="title"> Tipo: </div>
+                <select class="options">
+                    <option > Auxiliar </option>
+                    <option > Control  </option>
+                    <option > Tutoría  </option>
+                </select>
+            </div>
+            <div class="filter">
+                <div class="title"> Año: </div>
+                <input type="text" class="options">
+            </div>
+        </div>
+
+        <div class="materials">
+            {% for material in materials %}
+                <div class="material">
+                    {% if material.image.url is not null %}
+                        <a href="{% url 'specific-material' material.id %}">
+                            <img src="{{ material.image.url }}" alt="Material">
+                        </a>
+                    {% else %}
+                        <img alt="Material">
+                    {% endif %}
+
+                    <div class="name"> {{ material.name }} </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <div class="materials-container">
-        <div class="material"> Material 1 </div>
-        <div class="material"> Material 2 </div>
-        <div class="material"> Material 3 </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
-        <div class="material"> Material n </div>
+
+    <div class="upload">
+        <div class="title"> ¿QUIERES APORTAR A LA COMUNIDAD DE MECHÓN PAUTERO? </div>
+        <button> SUBIR MATERIAL </button>
     </div>
 </div>
 {% endblock %}

@@ -23,5 +23,7 @@ class Material(models.Model):
     file  = models.FileField(upload_to='material/static/Documents')
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
+    image = models.ImageField(upload_to='material/static/Documents', blank=True, null=True)
+
     def __str__(self) -> str:
         return self.name

@@ -1,43 +1,102 @@
-.main-container{
-    width: 100%;
+.main-container {
+    margin-top: 90px;
     display: flex;
-
     flex-direction: row;
-    height: 100%;
 }
 
-.filters-container{
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 30%;
-
+.main-container .materials-container {
+    width: 68%;
     display: flex;
     flex-direction: column;
-    justify-content:space-around;
-
-    gap: 10px;
+    padding: 30px;
 }
 
-.filter{
-    width: 90%;
-    background-color: #f0f0f0;
-    padding: 3px;
-    border: 1px solid #ccc;
+.main-container .materials-container .course-title {
+    font-size: 18px;
+    font-style: italic;
+    padding: 5px;
+}
+
+.main-container .materials-container .filters {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.main-container .materials-container .filters .filter {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.main-container .materials-container .materials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.main-container .materials-container .materials .material {
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    height: 300px;
+
+    align-items: center;
+    text-align: center;
+}
+.main-container .materials-container .materials .material:hover {
+    transform: scale(1.05);
+    transition: 0.3s;    
+}
+
+.main-container .materials-container .materials .material .name {
+    font-family: Arial;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.main-container .materials-container .materials .material img {
+    width: 170px;
+    height: 230px;
+    border: solid black 1px;
+}
+
+.main-container .upload {
+    margin-top: 200px;
+    padding: 10px;
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-.materials-container{
-
-    padding-top: 10px;
-    padding-left: 10px;
-
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 70%;
-
-    gap: 40px;
+.main-container .upload .title {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
 }
 
-.material{
-    font-weight: bold;
+.main-container .upload button:hover {
+    background-color: #5B7C74;
+    transform: scale(1.05);
+    transition: 0.3s;
 }
+
+.main-container .upload button {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 300px;
+    align-self: center;
+    padding: 10px;
+    background-color: #6B9080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
