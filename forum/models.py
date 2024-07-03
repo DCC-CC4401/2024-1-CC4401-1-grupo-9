@@ -38,16 +38,28 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Mensaje en {self.entry_id}"
+        return self.message
     
-class Stats(models.Model):
+class Entry_votes(models.Model):
+    user = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
+    entry = models.ForeignKey(Entry, on_delete=models.CASCADE, null=True, blank=True)
+    vote = models.IntegerField(choices=[(1, 'Upvote'), (-1, 'Downvote')])  # True for upvote, False for downvote
+
+    class Meta:
+        unique_together = ('user', 'entry')
+
+    def __str__(self):
+        return f"Stats de {self.user_id} en entrada {self.entry_id}"
+
+
+class Message_votes(models.Model):
     user = models.ForeignKey(Estudiante, on_delete=models.CASCADE)
     entry = models.ForeignKey(Entry, on_delete=models.CASCADE, null=True, blank=True)
     message = models.ForeignKey(Message, on_delete=models.CASCADE, null=True, blank=True)
-    vote = models.BooleanField(default=False)  # True for upvote, False for downvote
-
+    vote = models.IntegerField(choices=[(1, 'Upvote'), (-1, 'Downvote')])
+    
     class Meta:
         unique_together = ('user', 'entry', 'message')
 
     def __str__(self):
-        return f"Stats de {self.user_id} en entrada {self.entry_id} o mensaje {self.message_id}"
+        return f"Stats de {self.user_id} en entrada {self.entry_id} o mensaje{self.message_id}"
