@@ -14,17 +14,21 @@
         <div class="course-title"> > Introducción al cálculo </div>
 
         <div class="filters">
-            <div class="filter">
+            <div class="filter" id="checkbox-filters">
                 <div class="title"> Tipo: </div>
-                <select class="options">
-                    <option > Auxiliar </option>
-                    <option > Control  </option>
-                    <option > Tutoría  </option>
-                </select>
+                <input class="input-radio" id="auxiliar-checkbox" type="radio" onclick="">
+                <label for="auxiliar-checkbox"> Auxiliar </label>
+
+                <input class="input-radio" id="control-checkbox" type="radio" onclick="">
+                <label for="control-checkbox"> Control </label>
+
+                <input class="input-radio" id="tutoria-checkbox" type="radio" onclick="">
+                <label for="tutoria-checkbox"> Tutoría </label>
             </div>
+
             <div class="filter">
                 <div class="title"> Año: </div>
-                <input type="text" class="options">
+                <input name="year" type="text" class="options">
             </div>
         </div>
 
@@ -52,3 +56,6 @@
     </div>
 </div>
 {% endblock %}
+
+{% load static %}
+{% block js %} <script src="{% static 'js/material-filters.js' %}"></script> {% endblock %}

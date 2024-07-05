@@ -21,13 +21,38 @@
     padding: 5px;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    gap: 30px;
 }
 
 .main-container .materials-container .filters .filter {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container .materials-container .filters .filter input[type="radio"] {
+    cursor: pointer;
+    margin-bottom: 3px;
+}
+
+.main-container .materials-container .filters .filter input {
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 10px;
+    align-self: center;
+    max-width: 140px;
+}
+
+.main-container .materials-container .filters .filter label {
+    font-family: Arial;
+}
+
+.main-container .materials-container .filters .filter .title {
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bolder;
 }
 
 .main-container .materials-container .materials {
