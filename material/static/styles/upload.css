@@ -121,24 +121,27 @@ select::placeholder {
 }
 
 .form button[type="submit"] {
-    display: block; /* Cambiamos a un elemento de bloque */
-    width: 50%; /* Ajustamos el ancho del botón */
-    height: 3em;
-    padding: 10px;
-    background-color: #F6FFF8;
-    color: #000000;
+    width: 50%; /* Ajusta el ancho para hacerlo más pequeño */
+    padding: 20px;
+    background-color: #F2F2F2;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    font-weight: 600;
+    border: 2px solid #6B9080;
     cursor: pointer;
-    font-size: 18px;
-    margin: 0; /* Eliminamos márgenes */
-    margin-left: 6em;
-    margin-bottom: 0.8em; /* Ajustamos el margen inferior */
-    margin-top: 2em; /* Ajustamos el margen superior */
+    align-self: center; /* Centra el botón dentro del formulario */
+    margin-top: 10px;
+
 }
 
 .form button[type="submit"]:hover {
-    background-color: #BDDBD4;
+    background-color: #6B9080;
+    color: white;
+    transform: scale(1.05);
+    transition: 0.5s;
+    border: 1px solid #ffffff;
 }
 
 
@@ -159,7 +162,7 @@ select::placeholder {
 }
 
 .custom-file-upload:hover {
-    background-color: #5D7B6D;
+    background-color: #5d7b6d69;
 }
 
 .custom-text-input {
