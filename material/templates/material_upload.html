@@ -1,14 +1,53 @@
 {% extends "base.html" %}
 
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/upload.css' %}">
+{% endblock %}
+
 {% block title %}
 <title> Subir material </title>
 {% endblock %}
 
 {% block content %}
-<h1>Upload Material</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
+    <div class="content">
+        <div class="form">
+            <h2>Es sencillo aportar a la comunidad</h2>
+            <div class = "form-row2">
+                <div class = "form-row-file">
+                    {{ form.file }}
+                    <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Subir archivo
+                    </label>
+                </div>
+                <span id="file-name">No se ha seleccionado archivo</span> 
+            </div>
+            <div class = "form-row">
+                <h4>Nombre:</h4>
+                {{ form.name }}
+            </div>
+            <div class = "form-row">
+                <h4>Curso:</h4>
+                {{ form.course }}
+            </div>
+            <div class = "form-row">
+                <h4>Tipo del material:</h4>
+                {{ form.type }}
+            </div>
+            <div class = "form-row">
+                <h4>Año:</h4>
+                {{ form.year }}
+        </div>
+        <button type="submit">Publicar</button>
+    </div>
 </form>
+
+<script>
+    document.getElementById('file-upload').addEventListener('change', function() {
+        var fileName = this.files[0].name;
+        document.getElementById('file-name').textContent = fileName;
+    });
+</script>
 {% endblock %}
