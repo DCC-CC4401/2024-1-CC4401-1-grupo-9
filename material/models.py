@@ -21,9 +21,19 @@ class Material(models.Model):
     """
     name  = models.CharField(max_length=50)
     file  = models.FileField(upload_to='material/static/Documents')
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-
     image = models.ImageField(upload_to='material/static/Documents', blank=True, null=True)
+
+    # Filtros
+    MATERIAL_TYPE_CHOICES = [
+        ('Auxiliar', 'Auxiliar'),
+        ('Control', 'Control'),
+        ('Tutoría', 'Tutoría'),
+    ]
+
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    type = models.CharField(max_length=50, choices=MATERIAL_TYPE_CHOICES, default='Material')
+    year = models.IntegerField(default=1999)
+
 
     def __str__(self) -> str:
         return self.name
