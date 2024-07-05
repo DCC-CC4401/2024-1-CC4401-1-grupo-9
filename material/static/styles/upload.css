@@ -1,0 +1,191 @@
+/* Asegúrate de que el body ocupe toda la altura de la pantalla */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #F6FFF8; /* Color de fondo */
+    background-image: url('../images/fondo.png');
+    background-size: cover; /* Otras opciones: contain, auto, 100% 100%, etc. */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen */
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Usa fixed o absolute dependiendo de tus necesidades */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Blanco con 50% de opacidad */
+    z-index: -1; /* Asegúrate de que esté detrás del contenido */
+    pointer-events: none; /* Permite que los elementos sobre la capa sean interactivos */
+}
+
+/* Estilo para centrar el contenido del bloque */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%; /* Ajustamos el ancho del contenido */
+    max-width: 600px; /* Limitamos el ancho máximo */
+    margin: 0; /* Eliminamos márgenes */
+    margin-top: 5em;
+}
+
+/* Estilo para el formulario */
+.form {
+    width: 100%; /* Ajustamos el ancho del formulario */
+    padding: 30px;
+    background-color: #7EA091;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para las filas del formulario */
+.form-row {
+    margin-bottom: 10px;
+}
+
+.form-row-file {
+    margin-bottom: 30px;
+}
+
+.form-row2 {
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+/* Estilo para los encabezados dentro del formulario */
+h1, h2, h4 {
+    margin: 10px 0;
+    color: #F6FFF8;
+}
+
+span {
+    margin: 10px 0;
+    color: #F6FFF8;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.form h2 {
+    color: #F6FFF8;
+}
+
+.form h4 {
+    color: #F6FFF8;
+    margin-bottom: 0.4em;
+}
+
+input {
+    width: 77.5%; /* Asegura que todos los input tengan el mismo ancho */
+    height: 3em;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #000000;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #F6FFF8;
+}
+
+select {
+    width: 80%; /* Asegura que todos los input tengan el mismo ancho */
+    height: 3em;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #000000;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #F6FFF8;
+}
+
+input::placeholder {
+    color: #6B9080;
+    font-size: large;
+}
+
+select::placeholder {
+    color: #6B9080;
+    font-size: large;
+}
+
+.form button[type="submit"] {
+    display: block; /* Cambiamos a un elemento de bloque */
+    width: 50%; /* Ajustamos el ancho del botón */
+    height: 3em;
+    padding: 10px;
+    background-color: #F6FFF8;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0; /* Eliminamos márgenes */
+    margin-left: 6em;
+    margin-bottom: 0.8em; /* Ajustamos el margen inferior */
+    margin-top: 2em; /* Ajustamos el margen superior */
+}
+
+.form button[type="submit"]:hover {
+    background-color: #BDDBD4;
+}
+
+
+.custom-file-input {
+    display: none; /* Oculta el campo de input nativo */
+}
+
+.custom-file-upload {
+    font-weight: 700;
+    color: #000000;
+    padding: 15px 35px;
+    background-color: #F6FFF8;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 18px;
+}
+
+.custom-file-upload:hover {
+    background-color: #5D7B6D;
+}
+
+.custom-text-input {
+    width: 100%;
+    height: 2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #000000;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #F6FFF8;
+}
+
+.custom-number-input {
+    width: 100%;
+    height: 2em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #EAF4F4;
+    font-size: large;
+    color: #000000;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    border-color: #F6FFF8;
+}
