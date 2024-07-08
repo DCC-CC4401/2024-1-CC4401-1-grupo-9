@@ -68,7 +68,6 @@ Vista para manejar la API de foros.
 Esta vista permite obtener los foros en formato JSON
 """
 def api_forums(request: HttpRequest) -> JsonResponse:
-
     if request.method == 'GET':
         entry_id = request.GET.get('entry_id', None)
         if entry_id:
@@ -104,8 +103,22 @@ def api_forums(request: HttpRequest) -> JsonResponse:
                 {'id': forum.id, 'title': forum.title, 'body': forum.body, 'created_at': forum.created_at} 
                 for forum in forums
             ]
-        
         return JsonResponse(data, safe=False)
+
+    elif request.method == 'POST':
+        # Si el metodo es Post se procesa el formulario de respuesta de una entrada
+        entry_id = request.GET.get('entry_id', None)
+        form = ForumMessage(request.POST)
+        print(form.is_valid())
+        print(form)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.entry = get_object_or_404(Entry, id=entry_id)
+            message.user = request.user
+            message.save() 
+            return JsonResponse({'status': 'ok'}, status=200)
+        else:
+            return JsonResponse({'status': 'error'}, status=400)
 
 
 def api_votes(request: HttpRequest) -> JsonResponse:
