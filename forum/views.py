@@ -141,7 +141,7 @@ def api_votes(request: HttpRequest) -> JsonResponse:
         message_id = request.GET.get('message_id', None)
         vote_type = request.GET.get('vote_type', None)
 
-        user = 'chunchometalero'
+        user = request.user
         estudiante = get_object_or_404(Estudiante, username=user)
         vote = 1
         entry = get_object_or_404(Entry, id=entry_id) if entry_id else None
