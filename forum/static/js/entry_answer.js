@@ -13,3 +13,38 @@ answerButton.addEventListener('click', function() {
     }
 });
 
+// Añade un controlador de eventos para el evento de envío del formulario
+formRespuesta.addEventListener('submit', function(event) {
+    event.preventDefault(); // Previene el envío predeterminado del formulario
+
+    const entry_id = window.location.pathname.split('/')[2];
+    const message = document.getElementById('answer-text').value;
+
+    const formData = new FormData();
+    formData.append('message', message);
+
+    // CSRF token
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+
+    fetch(`/api/forums/?entry_id=${entry_id}`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrftoken,
+        },
+        body: formData
+    })
+    .then(response => {
+        if(response.ok) {
+            return response.json(); // o response.text() si esperas una respuesta en texto plano
+        }
+        throw new Error('Algo salió mal con la petición fetch.');
+    })
+    .then(data => {
+        console.log(data);
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
