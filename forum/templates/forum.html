@@ -58,6 +58,13 @@
                 </div>
             </div>
         </div>
+        <div id="form-respuesta" hidden>
+            <form class="formulario" id="submit-answer" method="post">
+                {% csrf_token %}
+                <textarea id="answer-text" class="answer-text" name="answer-text" placeholder="Escribe tu respuesta aquí"></textarea>
+                <button id="answer-submit" class="answer-submit"> Enviar </button>
+            </form>
+        </div>
         <div id="sorter-answers" class="sorter-answers">
             <p id="num-answers"></p>
             <button id="sorter" class="sorter"> Ordenar Por </button>
@@ -68,6 +75,7 @@
 
 {% block js %}
     <script src="{% static 'js/forum_entry.js' %}"></script>
+    <script src="{% static 'js/entry_answer.js' %}"></script>
 {% endblock %}
 
 
