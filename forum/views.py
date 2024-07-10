@@ -80,10 +80,11 @@ def api_forums(request: HttpRequest) -> JsonResponse:
                     'id': forum[0].id,
                     'title': forum[0].title,
                     'body': forum[0].body,
-                    'created_at': forum[0].created_at
+                    'created_at': forum[0].created_at,
+                    'user': forum[0].user.username if forum[0].user else 'Anonimo'
                     },
                     'messages': [
-                        {'id': msg.id, 'message': msg.message, 'created_at': msg.created_at} 
+                        {'id': msg.id, 'message': msg.message, 'created_at': msg.created_at, 'user': msg.user.username if msg.user else 'Anonimo'} 
                         for msg in messages
                     ]
                 }
