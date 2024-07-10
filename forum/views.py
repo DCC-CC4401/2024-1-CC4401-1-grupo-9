@@ -74,7 +74,7 @@ def api_forums(request: HttpRequest) -> JsonResponse:
             # Si se pasa un id de entrada, se obtienen los mensajes 
             forum = Entry.objects.filter(id=entry_id)
             if (forum):
-                messages = Message.objects.filter(entry_id=entry_id).order_by('created_at').reverse()
+                messages = Message.objects.filter(entry_id=entry_id).order_by('created_at')
                 data = {
                     'forum': {
                     'id': forum[0].id,
@@ -118,6 +118,7 @@ def api_forums(request: HttpRequest) -> JsonResponse:
             message.save() 
             return JsonResponse({'status': 'ok'}, status=200)
         else:
+            print(form.errors)
             return JsonResponse({'status': 'error'}, status=400)
 
 
