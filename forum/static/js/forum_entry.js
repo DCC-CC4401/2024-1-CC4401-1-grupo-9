@@ -10,6 +10,16 @@ const fetch_forum = async (id) => {
     }
 }
 
+const fetch_votes = async (id) => {
+    try{
+        const url = `/api/vote/?entry_id=${id}`;
+        const response = await fetch(url);
+        return response.json();
+    } catch (error) {
+        throw new Error('Error al obtener los votos');
+    }
+}
+
 function date_timeCalculator(datetime){
     const date = new Date(datetime);
     const now = new Date();
