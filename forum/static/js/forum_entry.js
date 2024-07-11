@@ -37,6 +37,11 @@ fetch_forum(forum_id).then((data) => {
     h2.textContent = data.forum.title;
     title.appendChild(h2);
 
+    entry_author_time = document.getElementById('entry-author-time');
+    p = document.createElement('p');
+    p.textContent = `Subido por ${data.forum.user} hace ${date_timeCalculator(data.forum.created_at)}`;
+    entry_author_time.appendChild(p);
+
     entry_body = document.getElementById('entry-body');
     p = document.createElement('p');
     p.innerHTML = data.forum.body;
