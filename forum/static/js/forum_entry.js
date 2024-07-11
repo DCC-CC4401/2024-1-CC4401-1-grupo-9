@@ -43,20 +43,20 @@ function date_timeCalculator(datetime){
 
 fetch_forum(forum_id).then((data) => {
     fetch_votes(forum_id).then((votes) => {
-    title = document.getElementById('entry-title');
-    h2 = document.createElement('h2');
-    h2.textContent = data.forum.title;
-    title.appendChild(h2);
+        title = document.getElementById('entry-title');
+        h2 = document.createElement('h2');
+        h2.textContent = data.forum.title;
+        title.appendChild(h2);
 
-    entry_author_time = document.getElementById('entry-author-time');
-    p = document.createElement('p');
-    p.textContent = `Subido por ${data.forum.user} hace ${date_timeCalculator(data.forum.created_at)}`;
-    entry_author_time.appendChild(p);
+        entry_author_time = document.getElementById('entry-author-time');
+        p = document.createElement('p');
+        p.textContent = `Subido por ${data.forum.user} hace ${date_timeCalculator(data.forum.created_at)}`;
+        entry_author_time.appendChild(p);
 
-    entry_body = document.getElementById('entry-body');
-    p = document.createElement('p');
+        entry_body = document.getElementById('entry-body');
+        p = document.createElement('p');
         p.textContent = data.forum.body;
-    entry_body.appendChild(p);
+        entry_body.appendChild(p);
 
         entry_answer = document.getElementById('entry-answers');
         p = document.createElement('p');
@@ -71,29 +71,88 @@ fetch_forum(forum_id).then((data) => {
         votes_counter = document.getElementById('votes-counter');
         votes_counter.textContent = votes.entry_votes[forum_id];
 
-    document.getElementById('num-answers').innerText = "Respuestas: " + data.messages.length;
+        document.getElementById('num-answers').innerText = "Respuestas: " + data.messages.length;
+
+        /* *********************************************************************
+
+            Recuperacion de mensajes y sistema de votos para cada mensaje
+        
+        
+        ********************************************************************* */
+
+        const answerContainer = document.getElementById('answer-container'); 
+
+        for (let i = 0; i < data.messages.length; i++) {
+            const answerDiv = document.createElement('div');
+            answerDiv.className = 'answers';
+
+            const authorTimeDiv = document.createElement('div');
+            authorTimeDiv.className = 'answer-author-time';
+            const authorTimeP = document.createElement('p');
+            authorTimeP.textContent = `Respondido por ${data.messages[i].user} hace ${date_timeCalculator(data.messages[i].created_at)}`;
+            authorTimeDiv.appendChild(authorTimeP);
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'answer-content';
+            const contentP = document.createElement('p');
+            contentP.className = 'answer-content';
+            contentP.textContent = data.messages[i].message;
+            contentDiv.appendChild(contentP);
+
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'answer-buttons';
+
+            const buttonUp = document.createElement('button');
+            buttonUp.className = 'button-up';
+            buttonUp.textContent = 'Upvote';
+            buttonUp.id = `button-up-${data.messages[i].id}`;
+
+            const votesSpan = document.createElement('span');
+            votesSpan.textContent = votes.message_votes[data.messages[i].id];
+
+            const buttonDown = document.createElement('button');
+            buttonDown.className = 'button-down';
+            buttonDown.textContent = 'DownVote';
+            buttonDown.id = `button-down-${data.messages[i].id}`;
+
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            // Agregar EventListeners
+            buttonUp.addEventListener('click', async () => {
+                const formData = new FormData();
+                formData.append('vote', 1);
+                const message_data = await fetch_forum(forum_id);
+                const url = `/api/vote/?entry_id=${forum_id}&message_id=${message_data.messages[i].id}&vote_type=1`;
+                const body = formData;
+                const response = await fetch(url, {method: 'POST', headers: {'X-CSRFToken': csrftoken}, body: body});
+                const data = await response.json();
+                votesSpan.textContent = data.total_votes;
+                
+            });
+
+            buttonDown.addEventListener('click', async () => {
+                const formData = new FormData();
+                formData.append('vote', -1);
+                const message_data = await fetch_forum(forum_id);
+                const url = `/api/vote/?entry_id=${forum_id}&message_id=${message_data.messages[i].id}&vote_type=1`;
+                const response = await fetch(url, {method: 'POST', headers: {'X-CSRFToken': csrftoken}, body: formData});
+                const data = await response.json();
+                votesSpan.textContent = data.total_votes;
+            });
+
+            buttonsDiv.appendChild(buttonDown);
+            buttonsDiv.appendChild(votesSpan);
+            buttonsDiv.appendChild(buttonUp);
 
 
-    /* ${data.forum.body} */
+            answerDiv.appendChild(authorTimeDiv);
+            answerDiv.appendChild(contentDiv);
+            answerDiv.appendChild(buttonsDiv);
 
-
-    for (let i = 0; i < data.messages.length; i++) {
-        document.getElementById('answer-container').innerHTML += 
-        `<div id="answers" class="answers">
-            <div id="answer-author-time" class="answer-author-time">
-                <p> Subido por Usuario Genérico2 hace 2 horas </p>
-            </div>
-            <div id="answer-content" class="answer-content"> 
-                <p class="entry-message"> ${data.messages[i].message} </p>
-            </div>
-            <div id="answer-buttons" class="answer-buttons">
-                <button id="upvote" class="upvote"> Upvote </button>
-                <span class="votes-counter"> +1 </span>
-                <button id="downvote" class="downvote"> Downvote </button>
-            </div>
-        </div>`;
-    }
+            answerContainer.appendChild(answerDiv);
+        }
+    });
 });
-});
 
-
+            
+            
