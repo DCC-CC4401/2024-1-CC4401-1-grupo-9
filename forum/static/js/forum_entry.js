@@ -10,10 +10,31 @@ const fetch_forum = async (id) => {
     }
 }
 
+function date_timeCalculator(datetime){
+    const date = new Date(datetime);
+    const now = new Date();
+    const diff = now - date;
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(months / 12);
+
+    if (years > 0) return years + " años";
+    if (months > 0) return months + " meses";
+    if (days > 0) return days + " días";
+    if (hours > 0) return hours + " horas";
+    if (minutes > 0) return minutes + " minutos";
+    if (seconds > 0) return seconds + " segundos";
+    return "0 segundos";
+}
+
 fetch_forum(forum_id).then((data) => {
     title = document.getElementById('entry-title');
     h2 = document.createElement('h2');
-    h2.innerHTML = data.forum.title;
+    h2.textContent = data.forum.title;
     title.appendChild(h2);
 
     entry_body = document.getElementById('entry-body');
@@ -26,7 +47,6 @@ fetch_forum(forum_id).then((data) => {
 
     /* ${data.forum.body} */
 
-    
 
     for (let i = 0; i < data.messages.length; i++) {
         document.getElementById('answer-container').innerHTML += 
