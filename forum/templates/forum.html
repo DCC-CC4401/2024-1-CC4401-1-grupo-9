@@ -17,6 +17,9 @@
                     <div id="entry-title" class="entry-title">
                         {{ forum.title }}
                     </div>
+                    <div id="entry-body" class="entry-body"> 
+                        {{forum.body}}
+                    </div>
                     <div id="entry-author-views" class="entry-author-views">
                         <div id="entry-author-time" class="entry-author-time">
                             <p> Subido por {{ forum.user }}, {{ forum.created_at }} </p>
@@ -33,9 +36,6 @@
                             <p> Votos: +5 </p>
                         </div>
                     </div>    
-                </div>
-                <div id="entry-body" class="entry-body"> 
-                    
                 </div>
                 <div id="entry-tags" class="tags">
                     <div class="tags"> Diseño y análisis de algoritmos </div>
@@ -60,24 +60,27 @@
 
     <form action="{% url 'forum' forum.id %}" method="POST" class="answer-form">
         {% csrf_token %}
-        <textarea name="message" type="text" placeholder="Respuesta"></textarea>
+        <textarea name="message" type="text" placeholder="Escribe tu respuesta aqui"></textarea>
         <button class="answer-submit"> Enviar </button>
     </form>
 
+    <div id= "all-answer" class="all-answer">
     {% for msg in messages %}
         <div class="answer">
-
             <div class="answer-content">
-                <div class="answer-body"> <p>{{ msg.message }} </p></div>
+                <div class="answer-body"> 
+                    {{ msg.message }} 
+                    </div>
             </div>
-
             <div class="answer-data">
-                <div class="answer-author-time"> <p>Respondido por {{ msg.user }}, {{ msg.created_at }} </p></div>
+                <div class="answer-author-time"> 
+                    Respondido por {{ msg.user }}, {{ msg.created_at }}
+                </div>
             </div>
-
         </div>
     {% endfor %}
-
+    </div>
+    
 {% endblock %}
 
 {% block js %}

@@ -8,6 +8,7 @@
     width: 90%;
     background-color: #BFD3C8;
     padding: 2em;
+    border-radius: 8px;
 }
 
 .entry-content{
@@ -16,6 +17,18 @@
     margin-right: auto;
     font-family: 'Roboto', sans-serif;
 
+}
+
+.entry-title {
+    font-size: 1.5em;  
+    font-weight: bold;  
+    font-family: Arial, sans-serif; 
+    margin-bottom: 1em;  
+}
+
+.entry-body {
+    font-size: 1em;  
+    font-family: Georgia, serif;  
 }
 
 .entry-author-views{
@@ -97,6 +110,60 @@
     border: none;
     font-family: 'Roboto', sans-serif;
     gap: 1em;
+}
+
+.answer-form {
+    margin-top: 20px;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    padding: 15px;
+    border-radius: 8px;
+}
+.answer-form textarea {
+    width: 30%; 
+    height: 30px; 
+    padding: 5px; 
+    border-radius: 5px; 
+    font-family: 'Roboto', sans-serif; 
+    font-size: .9em; 
+    background-color: #def7f1;
+    resize: none; 
+}
+
+.all-answer {
+    margin-top: 20px; 
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.answer {
+    background-color: #c7e8d7; 
+    padding: 1em;
+    margin-bottom: 15px;  
+    border-radius: 8px; 
+}
+
+.answer-content {
+    margin-bottom: 10px; 
+}
+
+.answer-body {
+    font-family: 'Roboto', sans-serif; 
+    font-size: .87em; 
+    color: #333; 
+}
+
+.answer-data {
+    display: flex;
+    justify-content: space-between;
+    font-size: .85em;
+    color: #666;
+}
+
+.answer-author-time {
+    font-size: .85em;
 }
 
 
