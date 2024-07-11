@@ -42,6 +42,7 @@ function date_timeCalculator(datetime){
 }
 
 fetch_forum(forum_id).then((data) => {
+    fetch_votes(forum_id).then((votes) => {
     title = document.getElementById('entry-title');
     h2 = document.createElement('h2');
     h2.textContent = data.forum.title;
@@ -54,8 +55,21 @@ fetch_forum(forum_id).then((data) => {
 
     entry_body = document.getElementById('entry-body');
     p = document.createElement('p');
-    p.innerHTML = data.forum.body;
+        p.textContent = data.forum.body;
     entry_body.appendChild(p);
+
+        entry_answer = document.getElementById('entry-answers');
+        p = document.createElement('p');
+        p.textContent = "Respuestas:" + data.messages.length;
+        entry_answer.appendChild(p);
+
+        const entry_votes = document.getElementById('entry-votes');
+        p = document.createElement('p');
+        p.textContent = "Votos:" + votes.entry_votes_count;
+        entry_votes.appendChild(p);
+
+        votes_counter = document.getElementById('votes-counter');
+        votes_counter.textContent = votes.entry_votes[forum_id];
 
     document.getElementById('num-answers').innerText = "Respuestas: " + data.messages.length;
 
@@ -80,7 +94,6 @@ fetch_forum(forum_id).then((data) => {
         </div>`;
     }
 });
- 
-
+});
 
 
