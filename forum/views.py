@@ -126,15 +126,21 @@ def api_forums(request: HttpRequest) -> JsonResponse:
 def api_votes(request: HttpRequest) -> JsonResponse:
     if request.method == 'GET':
         entry_id = request.GET.get('entry_id', None)
+        entry_votes = {}
         if entry_id:
-            entry_votes = Entry_votes.objects.filter(entry_id=entry_id).aggregate(
+            entry = Entry_votes.objects.filter(entry_id=entry_id).aggregate(
                 total_votes=Sum(Case(
                     When(vote=1, then=1),
                     When(vote=-1, then=-1),
                     output_field=IntegerField()
                 ))
             )['total_votes']
-        
+            entry_votes[entry_id] = entry if entry else 0
+
+            # Calcular la cantidad de usuarios que han votado
+            voter_count = Entry_votes.objects.filter(entry_id=entry_id).values('user').distinct().count()
+
+            # Obtener los votos de los mensajes
             messages = Message.objects.filter(entry_id=entry_id)
             messages_votes = {}
     
@@ -146,36 +152,58 @@ def api_votes(request: HttpRequest) -> JsonResponse:
                         output_field=IntegerField()
                     ))
                 )['total_votes']
-
                 messages_votes[msg.id] = message_votes if message_votes else 0
     
-            return JsonResponse({'entry_votes': entry_votes, 'message_votes': messages_votes}, status=200)             
+            return JsonResponse({'entry_votes': entry_votes, 'message_votes': messages_votes, 'entry_votes_count': voter_count}, status=200)             
 
     elif request.method == 'POST':
         entry_id = request.GET.get('entry_id', None)
-        message_id = request.GET.get('message_id', None)
         vote_type = request.GET.get('vote_type', None)
 
         user = request.user
-        estudiante = get_object_or_404(Estudiante, username=user)
-        vote = 1
+        vote = request.POST.get('vote', None)
         entry = get_object_or_404(Entry, id=entry_id) if entry_id else None
 
         #si vote_type es 0, entonces es un voto a una entrada
         if int(vote_type) == 0:
-            stats, created = Entry_votes.objects.get_or_create(user=estudiante, entry=entry, defaults={'vote': vote})
+            stats, created = Entry_votes.objects.get_or_create(user=user, entry=entry, defaults={'vote': vote})
             if not created:
                 stats.vote = vote
                 stats.save()
+            # Calcular votos totales para la entrada
+            total_votes = Entry_votes.objects.filter(entry=entry).aggregate(
+                total_votes=Sum(Case(
+                    When(vote=1, then=1),
+                    When(vote=-1, then=-1),
+                    output_field=IntegerField()
+                ))
+            )['total_votes']
+            # Calcular la cantidad de usuarios que han votado
+            voter_count = Entry_votes.objects.filter(entry_id=entry_id).values('user').distinct().count()
+
+
 
         #si vote_type es 1, entonces es un voto a un mensaje
         elif int(vote_type) == 1:
+            message_id = request.GET.get('message_id', None)
             message = get_object_or_404(Message, id=message_id) if message_id else None
 
-            stats, created = Message_votes.objects.get_or_create(user=estudiante, entry=entry, message=message, defaults={'vote': vote})
+            stats, created = Message_votes.objects.get_or_create(user=user, entry=entry, message=message, defaults={'vote': vote})
             if not created:
                 stats.vote = vote
                 stats.save()
+            # Calcular votos totales para el mensaje
+            total_votes = Message_votes.objects.filter(message=message).aggregate(
+                total_votes=Sum(Case(
+                    When(vote=1, then=1),
+                    When(vote=-1, then=-1),
+                    output_field=IntegerField()
+                ))
+            )['total_votes']
+            # Calcular la cantidad de usuarios que han votado
+            voter_count = Entry_votes.objects.filter(entry_id=entry_id).values('user').distinct().count()
+
+
         
-        return JsonResponse({'status': 'ok'}, status=200)
+        return JsonResponse({'status': 'ok', 'total_votes': total_votes if total_votes else 0, 'voter_count': voter_count}, status=200)
 
