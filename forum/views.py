@@ -44,6 +44,8 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                 message.entry = Entry.objects.filter(id=entry_id)
                 message.user = request.user
                 message.save()
+                
+                ### Agregar una respuesta al perfil del usuario
                 messages.success(request, 'Mensaje subido exitosamente')
                 return redirect('/forum/'+entry_id)
             else:
@@ -57,6 +59,9 @@ def forum(request: HttpRequest, entry_id: int = None) -> (HttpResponseRedirect |
                 entrada = form.save(commit=False)
                 entrada.user = request.user
                 entrada.save()
+                request.user.total_questions += 1
+                request.user.save()
+                ### Agregar una entrada al perfil del usuario
                 messages.success(request, 'Entrada subida exitosamente')
                 return redirect('/forum/'+str(entrada.id))
             else:
@@ -110,13 +115,13 @@ def api_forums(request: HttpRequest) -> JsonResponse:
         # Si el metodo es Post se procesa el formulario de respuesta de una entrada
         entry_id = request.GET.get('entry_id', None)
         form = ForumMessage(request.POST)
-        print(form.is_valid())
-        print(form)
         if form.is_valid():
             message = form.save(commit=False)
             message.entry = get_object_or_404(Entry, id=entry_id)
             message.user = request.user
             message.save() 
+            request.user.total_answers += 1
+            request.user.save()
             return JsonResponse({'status': 'ok'}, status=200)
         else:
             print(form.errors)
@@ -162,6 +167,7 @@ def api_votes(request: HttpRequest) -> JsonResponse:
 
         user = request.user
         vote = request.POST.get('vote', None)
+        print(int(vote)+5)
         entry = get_object_or_404(Entry, id=entry_id) if entry_id else None
 
         #si vote_type es 0, entonces es un voto a una entrada
@@ -180,9 +186,10 @@ def api_votes(request: HttpRequest) -> JsonResponse:
             )['total_votes']
             # Calcular la cantidad de usuarios que han votado
             voter_count = Entry_votes.objects.filter(entry_id=entry_id).values('user').distinct().count()
-
-
-
+            entrada = Entry_votes.objects.get(entry=entry)
+            estudiante = Estudiante.objects.get(id = entrada.user.id)
+            estudiante.useful_answers += int(vote)
+            estudiante.save()
         #si vote_type es 1, entonces es un voto a un mensaje
         elif int(vote_type) == 1:
             message_id = request.GET.get('message_id', None)
@@ -202,6 +209,10 @@ def api_votes(request: HttpRequest) -> JsonResponse:
             )['total_votes']
             # Calcular la cantidad de usuarios que han votado
             voter_count = Entry_votes.objects.filter(entry_id=entry_id).values('user').distinct().count()
+            entrada = Entry_votes.objects.get(entry=entry)
+            estudiante = Estudiante.objects.get(id = entrada.user.id)
+            estudiante.useful_answers += int(vote)
+            estudiante.save()
 
 
         
