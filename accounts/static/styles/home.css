@@ -1,11 +1,11 @@
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 0;
+    margin: 20;
     background-image: url('../images/fondo.png');
     background-size: cover; 
     background-repeat: no-repeat; 
     background-position: center; 
-    height: 100%;
+    overflow: hidden;
 }
 
 .home-header {
@@ -102,7 +102,7 @@ body {
 }
 
 .home-content h2 {
-    font-size: 2.5em;
+    font-size: 2.7em;
     margin: 10px 0;
     color: #0e6f30;
 }
@@ -114,7 +114,8 @@ body {
 }
 
 .home-content .discover-btn {
-    padding: 11px 18px;
+    margin: 10px 200px;
+    padding: 12px 20px;
     background-color: #548e6e;
     color: #000;
     text-decoration: none;
