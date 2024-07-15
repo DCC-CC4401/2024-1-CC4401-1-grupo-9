@@ -13,45 +13,44 @@
     <div class="forum-entry" id="entry-data">
         <div id="entry-container" class="entry-container"> 
             <div id="entry-content" class="entry-content">
+                
+                
                 <div id="entry-data" class="entry-data">
-                    <div id="entry-title" class="entry-title">
+                    <div id="entry-title" class="entry-title"></div>
+                    <div id="entry-stuff" class="entry-stuff">
+                        <div id="entry-author" class="entry-author">
+                            <div id="entry-author-views" class="entry-author-views">
+                                <div id="entry-author-time" class="entry-author-time">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="entry-answers-votes" class="entry-answers-votes">
+                            <div id="entry-views" class="entry-views"></div>
+                            <div id="entry-answers" class="entry-answers"></div>
+                            <div id="entry-votes" class="entry-votes"></div>
+                        </div>
                     </div>
-                    <div id="entry-author-views" class="entry-author-views">
-                        <div id="entry-author-time" class="entry-author-time">
-                            <p> Subido por Usuario Genérico hace 13 horas </p>
-                        </div>
-                        <div id="entry-views" class="entry-views">
-                            <p> Views: 15 </p>
-                        </div>
-                    </div>
-                    <div id="entry-answers-votes" class="entry-answers-votes">
-                        <div id="entry-answers" class="entry-answers">
-                            <p> Respuestas: 10 </p>
-                        </div>
-                        <div id="entry-votes" class="entry-votes">
-                            <p> Votos: +5 </p>
-                        </div>
-                    </div>    
                 </div>
-                <div id="entry-body" class="entry-body"> 
-                    
-                </div>
-                <div id="entry-tags" class="tags">
-                    <div class="tags"> Diseño y análisis de algoritmos </div>
-                    <div class="tags"> Salud mental </div>
-                    <div class="tags"> Paro </div>
-                </div>
+
+                <div id="entry-body" class="entry-body"></div>
+                
                 <div id="entry-buttons" class="entry-buttons">
-                    <button id="downvote" class="downvote"> Downvote </button>
-                    <span id="votes-counter" class="votes-counter"> +5 </span>
-                    <button id="upvote" class="upvote"> Upvote </button>
+                    <button id="downvote" class="downvote"> DownVote </button>
+                    <span id="votes-counter" class="votes-counter"></span>
+                    <button id="upvote" class="upvote"> UpVote </button>
                     <button id="answer-button" class="answer-button"> Responder </button>
                 </div>
             </div>
         </div>
+        <div id="form-respuesta" hidden>
+            <form class="formulario" id="submit-answer" method="post">
+                {% csrf_token %}
+                <textarea id="answer-text" class="answer-text" name="answer-text" placeholder="Escribe tu respuesta aquí"></textarea>
+                <button id="answer-submit" class="answer-submit"> Enviar </button>
+            </form>
+        </div>
         <div id="sorter-answers" class="sorter-answers">
             <p id="num-answers"></p>
-            <button id="sorter" class="sorter"> Ordenar Por </button>
         </div>
         <div id="answer-container" class="answer-container"></div>    
     </div>
@@ -59,6 +58,8 @@
 
 {% block js %}
     <script src="{% static 'js/forum_entry.js' %}"></script>
+    <script src="{% static 'js/entry_answer.js' %}"></script>
+    <script src="{% static 'js/entry_votes.js' %}"></script>
 {% endblock %}
 
 
