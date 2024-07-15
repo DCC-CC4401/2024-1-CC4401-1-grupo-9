@@ -1,0 +1,130 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 20;
+    background-image: url('../images/fondo.png');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    overflow: hidden;
+}
+
+.home-header {
+    width: 100%;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8.5px 12px;
+    background-color: #7EA091; 
+    border-bottom: 1px solid #ccc; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+    margin-right: 9px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #F6FFF8;
+    font-size: 16px;
+    margin-right: 25px;
+
+}
+.header .nav-links li a:hover {
+    color: #000000;
+}   
+
+.auth-buttons .btn {
+    font-weight: 700;
+    color: #000000;
+    padding: 15px 35px;
+    background-color: #F6FFF8;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-size: 15px;
+    margin-right: 10px;
+    margin-left: 5px;
+}
+.header .btn button:hover {
+    background-color: #F6FFF8;
+    color: #000000;
+    transform : scale(1.1);
+}
+.auth-buttons .login-btn {
+    background-color: #548e6e;
+    border-radius: 8px;     
+}
+
+.auth-buttons .register-btn {
+    background-color: #548e6e;
+    color: #000;
+    border-radius: 8px; 
+}
+
+.home-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: calc(100vh - 70px); 
+    margin-top: 70px; 
+}
+
+.home-content {
+    max-width: 50%;
+}
+
+.home-content h1 {
+    font-size: 3em;
+    margin: 0;
+    color: #000; 
+}
+
+.home-content h2 {
+    font-size: 2.7em;
+    margin: 10px 0;
+    color: #0e6f30;
+}
+
+.home-content p {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #000; 
+}
+
+.home-content .discover-btn {
+    margin: 10px 200px;
+    padding: 12px 20px;
+    background-color: #548e6e;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 8px; 
+}
+
+.home-image img {
+    width: 50%; 
+    height: auto;
+}
+
