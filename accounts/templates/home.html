@@ -1,43 +1,26 @@
+{% extends 'bases/base.html' %}
 
 {% load static %}
+
 {% block css %}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
 {% endblock %}
 
 {% block title %}
-    <title>Home</title>
-{% endblock %}
-{% block extra_nav %}
+<title>Bienvenido!</title>
 {% endblock %}
 
 {% block content %}
-<div class="home-header">
-    <header class="header">
-        <div class="logo">
-            <img src="{% static 'images/Logo.png' %}" alt="logo">
-            <span>MECHON PAUTERO</span>
-        </div>
-        <ul class="nav-links">
-            <!--<li><a href="{% url 'home' %}">INICIO</a></li>-->
-            <!--<li><a href="#">SERVICIOS</a></li>-->
-            <!--<li><a href="#">PLANES</a></li>-->
-            <!--<li><a href="#">CONTACTO</a></li>-->
-        </ul>
-        <nav class="auth-buttons">
-            <a href="{% url 'login' %}" class="btn login-btn">INICIAR SESIÓN</a>
-            <a href="{% url 'register' %}" class="btn register-btn">REGISTRO</a>
-        </nav>
-    </header>
-
+<div class="content">
     <div class="home-section">
         <div class="home-content">
             <h1>MATERIAL A TU ALCANCE</h1>
             <h2>CON MECHON PAUTERO</h2>
             <p>Material de estudio para pautear tus ramos favoritos de la FCFM!</p>
             <p> Ejercicios y controles resueltos recolectado por y para alumnos de primer año de Plan Común.</p>
-            <a href="{% url 'login' %}" class="discover-btn">DESCÚBRELO</a>
+            <div class="button">
+                <a href="{% url 'login' %}" class="discover-btn">DESCÚBRELO</a>
+            </div>    
         </div>
         <div class="home image">
             <img src="{% static 'images/homeFinal.png' %}" alt="Imagen">
