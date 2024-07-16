@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-left: 50px;
+    margin-left: 90px;
 
     width: 40%;
     padding: 20px;
@@ -96,6 +96,7 @@
     display: flex;
     align-content: center;
     justify-content: center;
+    margin-left: 36.8em;
 
     padding-left: 2px;
     padding-right: 2px;
@@ -123,24 +124,25 @@
 .forums-and-filter{
     display: flex;
     flex-direction: column;
+    
     width: 90%;
     padding-right: 50px;
 
     gap: 20px;
 
     margin-top: 5em;
-    align-items:end;
+    align-items: center;
     justify-content: top;
 
     font-family: 'Roboto', sans-serif;
 }
 
+
 /** container solo de entradas */
 .forums-container{
     display: flex;
     flex-direction: column;
-    width: 90%;
-
+    width: 80%;
     gap: 30px;
 
     margin-top: 0em;

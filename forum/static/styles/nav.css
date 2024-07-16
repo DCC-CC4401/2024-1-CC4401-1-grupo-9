@@ -1,5 +1,6 @@
 
 .header {
+    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     background-color: #6B9080;
     display: flex;
@@ -38,9 +39,10 @@
 }
 
 .header .nav-links li a {
+    font-weight: 550;
     text-decoration: none;
     color: #F6FFF8;
-    font-size: 20px;
+    font-size: 18px;
     margin-right: 25px;
 }
 
@@ -57,7 +59,7 @@
     border-radius: 20px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
-    font-size: 15px;
+    font-size: 17px;
     margin-right: 10px;
     margin-left: 5px;
 }
