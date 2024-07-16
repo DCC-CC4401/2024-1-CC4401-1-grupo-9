@@ -1,90 +1,16 @@
 body {
     font-family: 'Roboto', sans-serif;
-    margin: 20;
-    background-image: url('../images/fondo.png');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
+    margin: 0;
     overflow: hidden;
-}
-
-.home-header {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8.5px 12px;
-    background-color: #7EA091; 
-    border-bottom: 1px solid #ccc; 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 55px;
-    margin-right: 9px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    color: #F6FFF8;
-    font-size: 16px;
-    margin-right: 25px;
-
-}
-.header .nav-links li a:hover {
-    color: #000000;
-}   
-
-.auth-buttons .btn {
-    font-weight: 700;
-    color: #000000;
-    padding: 15px 35px;
-    background-color: #F6FFF8;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    font-size: 15px;
-    margin-right: 10px;
-    margin-left: 5px;
-}
-.header .btn button:hover {
-    background-color: #F6FFF8;
-    color: #000000;
-    transform : scale(1.1);
-}
-.auth-buttons .login-btn {
-    background-color: #548e6e;
-    border-radius: 8px;     
-}
-
-.auth-buttons .register-btn {
-    background-color: #548e6e;
-    color: #000;
-    border-radius: 8px; 
 }
 
 .home-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 50px;
     height: calc(100vh - 70px); 
@@ -93,6 +19,7 @@ body {
 
 .home-content {
     max-width: 50%;
+    text-align: left;
 }
 
 .home-content h1 {
@@ -114,17 +41,31 @@ body {
 }
 
 .home-content .discover-btn {
-    margin: 10px 200px;
-    padding: 12px 20px;
+    font-weight: 550;
+    display: block;
+    margin: 50px auto 0 auto; /* Centrado horizontalmente y con margen superior */
+    padding: 15px 35px;
     background-color: #548e6e;
-    color: #000;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.2em;
-    border-radius: 8px; 
+    transition: all 0.3s ease 0s;
+    font-size: 18px;
+    border-radius: 20px; 
+    text-align: center;
+    width: 200px;
+}
+
+.home-content .discover-btn:hover {
+    transform : scale(1.1);
+}
+
+
+.home-image {
+    max-width: 50%;
+    text-align: center;
 }
 
 .home-image img {
-    width: 50%; 
+    width: 100%;
     height: auto;
 }
-
