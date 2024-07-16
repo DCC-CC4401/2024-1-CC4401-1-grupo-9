@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="{% static 'styles/base.css' %}"> !-->
+        <link rel="stylesheet" href="{% static 'styles/nav.css' %}">
+
+        {% block css %} {% endblock %}
+        {% block title %} {% endblock %}
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">
+                <a href="{% url 'forums' %}">
+                    {% load static %}
+                    <img src="{% static 'images/Logo.png' %}" alt="logo">
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{% url 'forums' %}">Foro</a></li>
+                    <li><a href="{% url 'material' %}">Materiales</a></li>
+                </ul>
+            </nav>
+            <a href="{% url 'profile' %}" class="btn"><button>Mi perfil</button></a>
+        </header>
+        
+        {%block content%}
+        {%endblock%}
+
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
