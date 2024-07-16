@@ -39,10 +39,6 @@
         <div id="forums-container" class="forums-container">
             {% for entry in forums %}
             <a id="forum-entry" class="forum-entry" href="{% url 'forum' entry.id %}">
-                <div class="entry-data">
-                    <div> Votos: +5 </div>
-                    <div> Respuestas: 10 </div>
-                </div>
                 <div class="entry-content">
                     <div class="entry-title"> {{ entry.title }} </div>
                     <div class="entry-body">  {{ entry.body  }} </div>

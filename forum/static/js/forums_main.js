@@ -23,10 +23,6 @@ document.getElementById('search-title').addEventListener('input', async (event) 
             /** for each, append to the forums list */
             forums.innerHTML += 
                 `<a id="forum-entry" class="forum-entry" href="/forum/${element.id}">
-                    <div class="entry-data">
-                        <div> Votos: +${5} </div>
-                        <div> Respuestas: ${10} </div>
-                    </div>
                     <div class="entry-content">
                         <div class="entry-title"> ${element.title} </div>
                         <div class="entry-body">  ${element.body} </div>
