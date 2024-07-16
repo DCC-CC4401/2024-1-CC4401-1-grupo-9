@@ -1,3 +1,4 @@
+/* Estilo general del cuerpo */
 body {
     background-color: #f0f0f0;
     margin: 0;
@@ -7,62 +8,74 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
 
+/* Contenedor principal del perfil */
 .profile-container {
-    font-family: 'Roboto', sans-serif;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centrar horizontalmente */
-    background-color: #BDDBD5;
+    background-color: #FFFFFF;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 30%;
-    height: 300px; /* Establecer altura deseada */
-}
-
-
-
-.details {
-    top: 0;
-    left: 0;
-    width: 50%;
-}
-
-.statistics {
-    top: 0;
-    right: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 40%;
+    max-width: 800px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
-
-
+/* Estilo para los títulos */
 h1 {
-    font-family: 'Roboto', sans-serif;
-    color: #333;
-    text-align: left;
-    margin-bottom: 5px;
-    font-size: 30px; /* Tamaño de fuente más grande para detalles de usuario */
+    color: #2C3E50;
+    margin-bottom: 20px;
+    font-size: 32px;
+    text-align: center;
 }
 
 h2 {
-    font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: #34495E;
+    margin-bottom: 15px;
+    font-size: 28px;
+    font-weight: 600;
     text-align: left;
-    margin-bottom: 10px; /* Incrementar el espacio entre títulos y párrafos */
-    font-size: 26px; /* Aumentar el tamaño del título */
-    font-weight: bold; /* Hacer el título más audaz */
+    width: 100%;
+    border-bottom: 2px solid #BDC3C7;
+    padding-bottom: 5px;
 }
 
+/* Estilo para los párrafos */
 p {
     margin: 10px 0;
-    text-align: left; /* Alinear a la izquierda */
+    color: #7F8C8D;
+    font-size: 18px;
+    text-align: left;
 }
 
+/* Secciones de detalles y estadísticas */
+.details, .statistics {
+    width: 100%;
+    margin-bottom: 20px;
+}
 
+.details p, .statistics p {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Negrita para etiquetas */
 strong {
-    font-weight: bold;
+    color: #2C3E50;
+    font-weight: 600;
+}
+
+/* Estilo para la etiqueta <a> si existe */
+a {
+    color: #3498DB;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
