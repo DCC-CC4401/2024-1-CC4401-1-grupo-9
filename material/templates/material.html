@@ -15,18 +15,10 @@
 
     <div class="forum">
         <div class="title"> PUBLICA TU DUDA O COMENTARIO </div>
-        <textarea class="comentario"></textarea>
-        <button> POSTEAR </button>
+        <textarea class="comentario" id="response"></textarea>
+        <button id="response-button"> POSTEAR </button>
 
-        <div class="comments">
-            <div class="comment">
-                <div class="text">Alguno cacha como se hace la p2.c? la intenté hacer pero no me resultó, llegue hasta el paso donde me queda x-2 > x ^ 2...</div>
-                <div class="response-button"> Responder </div>
-            </div>
-            <div class="comment">
-                <div class="text"> Jajajaja la p1.d salió en el control y no la anoté :( </div>
-                <div class="response-button"> Responder </div>
-            </div>
+        <div class="comments" id="comments">
         </div>
 
     </div>
@@ -39,3 +31,5 @@
 </div>
 
 {% endblock %}
+
+{% block js %} <script src="{% static 'js/material.js' %}"></script> {% endblock %}

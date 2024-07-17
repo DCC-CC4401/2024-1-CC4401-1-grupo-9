@@ -2,26 +2,76 @@
 
 /* The id's of the filters */
 const filtersIds: string[] = ["auxiliar-checkbox", "control-checkbox", "tutoria-checkbox"];
+const filtersNames: { [key: string]: string } = {
+    "auxiliar-checkbox": "auxiliar",
+    "control-checkbox": "control",
+    "tutoria-checkbox": "tutoria"
+};
+
 /* The checked status of the filters */
 const checked: { [key: string]: boolean } = {};
+
+const yearFilter = document.getElementById("year-filter") as HTMLInputElement;
+
+type Material = {
+    name: string,
+    img_url: string,
+    material_url: string,
+};
+
+const handleMaterial = async (_: Event) => {
+    const year: string = yearFilter?.value;
+
+    try {
+        let url = `/api/materials/?year=${year}`;
+        filtersIds.forEach((id: string) => {
+            url += `&${filtersNames[id]}=${checked[id]}`;
+        });
+    
+        const response = await fetch(url) as Response;
+        const data = await response.json() as Material[]; 
+
+        const materialsContainer = document.getElementById("materials-container") as HTMLDivElement;
+        materialsContainer.innerHTML = "";
+        data.forEach((material: Material) => {
+            materialsContainer.innerHTML += `
+                <div class="material">
+                    <a href="${material.material_url}">
+                        <img src="${material.img_url}" alt="Material">
+                    </a>
+                    <div class="name"> ${material.name} </div>
+                </div>
+            `
+        });
+
+
+    } catch (error) {
+        console.error(error);
+    }
+};
 
 
 /** Updates the filter status
  *  Overwrites the checked status of the filter
  *  @param filter The filter to update
  */
-const updateFilter = (filter: HTMLInputElement) => {
+const updateFilter = (e: Event) => {
+    const filter = e.target as HTMLInputElement;
     filter.checked = checked[filter.id] = !checked[filter.id];
-}
-
+};
 
 /** Initializes the filters */
 filtersIds.forEach((id: string) => {
     const element: HTMLInputElement = document.getElementById(id) as HTMLInputElement;
+    element.addEventListener("click", updateFilter);
 
-    element.addEventListener("click", (event: Event) => { 
-        const target = event.target as HTMLInputElement;
-        updateFilter(target);
-    });
-    checked[id] = false;
-})
+    checked[id] = true;
+    element.checked = true;
+    element.addEventListener("click", handleMaterial);
+});
+
+yearFilter.addEventListener("input", handleMaterial);
+
+
+
+

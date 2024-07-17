@@ -1,4 +1,5 @@
-from django.http import HttpResponse, HttpRequest
+from django.http import HttpResponse, HttpRequest, JsonResponse
+from django.urls import reverse
 from django.shortcuts import render, redirect
 from material.models import Course, Material
 from .forms import MaterialForm
@@ -74,3 +75,38 @@ def subirMaterial(request: HttpRequest) -> HttpResponse:
                     context={'form': form}
                 )
 
+
+def apiMaterials(request: HttpRequest) -> JsonResponse:
+    """ View para la API de materiales.
+
+        GET:
+        Obtiene la lista de materiales en formato JSON.
+    """
+    if request.method == "GET":
+        materials = Material.objects
+
+        year = request.GET.get('year', None)
+        auxiliar = request.GET.get('auxiliar', "true")
+        control = request.GET.get('control', "true")
+        tutoria = request.GET.get('tutoria', "true")
+
+        if year is not None and year.isdigit():
+            materials = materials.filter(year=year)
+
+        if auxiliar == "false":
+            materials = materials.exclude(type="Auxiliar")
+        if control == "false":
+            materials = materials.exclude(type="Control")
+        if tutoria == "false":
+            materials = materials.exclude(type="Tutoría")
+
+        return JsonResponse(
+                data=[
+                    {
+                        "name": m.name, 
+                        "img_url": m.image.url if m.image else None, 
+                        "material_url": reverse("specific-material", args=[m.id]),
+                    } for m in materials.all()
+                ],
+                safe=False
+            )

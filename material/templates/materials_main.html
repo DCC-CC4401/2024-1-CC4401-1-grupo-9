@@ -28,11 +28,11 @@
 
             <div class="filter">
                 <div class="title"> Año: </div>
-                <input name="year" type="text" class="options">
+                <input name="year" type="text" class="options" id="year-filter">
             </div>
         </div>
 
-        <div class="materials">
+        <div class="materials" id="materials-container">
             {% for material in materials %}
                 <div class="material">
                     {% if material.image.url is not null %}
