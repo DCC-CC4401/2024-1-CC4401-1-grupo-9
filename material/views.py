@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpRequest, JsonResponse
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.shortcuts import render, redirect
 from material.models import Course, Material
@@ -7,6 +8,7 @@ import fitz
 import os
 
 
+@login_required
 def material(request: HttpRequest, material_id: int = None) -> HttpResponse:
     """ View para los materiales.
 
@@ -35,6 +37,7 @@ def material(request: HttpRequest, material_id: int = None) -> HttpResponse:
                 )
         
 
+@login_required
 def subirMaterial(request: HttpRequest) -> HttpResponse:
     """ View para subir materiales.
 
@@ -76,6 +79,7 @@ def subirMaterial(request: HttpRequest) -> HttpResponse:
                 )
 
 
+@login_required
 def apiMaterials(request: HttpRequest) -> JsonResponse:
     """ View para la API de materiales.
 
@@ -86,19 +90,14 @@ def apiMaterials(request: HttpRequest) -> JsonResponse:
         materials = Material.objects
 
         year = request.GET.get('year', None)
-        auxiliar = request.GET.get('auxiliar', "true")
-        control = request.GET.get('control', "true")
-        tutoria = request.GET.get('tutoria', "true")
+        types = ["Auxiliar", "Control", "Tutoría"]
 
         if year is not None and year.isdigit():
             materials = materials.filter(year=year)
 
-        if auxiliar == "false":
-            materials = materials.exclude(type="Auxiliar")
-        if control == "false":
-            materials = materials.exclude(type="Control")
-        if tutoria == "false":
-            materials = materials.exclude(type="Tutoría")
+        for t in types:
+            if  request.GET.get(t.lower().replace("í", "i"), "true") == "false":
+                materials = materials.exclude(type=t)
 
         return JsonResponse(
                 data=[

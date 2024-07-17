@@ -1,4 +1,6 @@
+import { getCookie } from "./getCookie";
 
+const csrftoken = getCookie('csrftoken');
 
 /* The id's of the filters */
 const filtersIds: string[] = ["auxiliar-checkbox", "control-checkbox", "tutoria-checkbox"];
@@ -19,6 +21,7 @@ type Material = {
     material_url: string,
 };
 
+/**  Fetches the materials with the selected filters */
 const handleMaterial = async (_: Event) => {
     const year: string = yearFilter?.value;
 
@@ -28,7 +31,12 @@ const handleMaterial = async (_: Event) => {
             url += `&${filtersNames[id]}=${checked[id]}`;
         });
     
-        const response = await fetch(url) as Response;
+        const response = await fetch(url, {
+                method: "GET",
+                headers: {"X-CSRFToken": csrftoken},
+                credentials: "include"
+            });
+
         const data = await response.json() as Material[]; 
 
         const materialsContainer = document.getElementById("materials-container") as HTMLDivElement;
@@ -43,7 +51,6 @@ const handleMaterial = async (_: Event) => {
                 </div>
             `
         });
-
 
     } catch (error) {
         console.error(error);

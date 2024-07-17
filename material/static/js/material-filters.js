@@ -8,6 +8,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+Object.defineProperty(exports, "__esModule", { value: true });
+const getCookie_1 = require("./getCookie");
+const csrftoken = (0, getCookie_1.getCookie)('csrftoken');
 /* The id's of the filters */
 const filtersIds = ["auxiliar-checkbox", "control-checkbox", "tutoria-checkbox"];
 const filtersNames = {
@@ -18,6 +21,7 @@ const filtersNames = {
 /* The checked status of the filters */
 const checked = {};
 const yearFilter = document.getElementById("year-filter");
+/**  Fetches the materials with the selected filters */
 const handleMaterial = (_) => __awaiter(void 0, void 0, void 0, function* () {
     const year = yearFilter === null || yearFilter === void 0 ? void 0 : yearFilter.value;
     try {
@@ -25,7 +29,11 @@ const handleMaterial = (_) => __awaiter(void 0, void 0, void 0, function* () {
         filtersIds.forEach((id) => {
             url += `&${filtersNames[id]}=${checked[id]}`;
         });
-        const response = yield fetch(url);
+        const response = yield fetch(url, {
+            method: "GET",
+            headers: { "X-CSRFToken": csrftoken },
+            credentials: "include"
+        });
         const data = yield response.json();
         const materialsContainer = document.getElementById("materials-container");
         materialsContainer.innerHTML = "";
