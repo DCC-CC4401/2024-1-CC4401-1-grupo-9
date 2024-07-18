@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getCookie = void 0;
-const getCookie = (name) => {
+export const getCookie = (name) => {
     let cookieValue = "";
     if (document.cookie && document.cookie !== '') {
         const cookies = document.cookie.split(';');
@@ -15,4 +12,3 @@ const getCookie = (name) => {
     }
     return cookieValue;
 };
-exports.getCookie = getCookie;
