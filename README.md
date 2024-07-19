@@ -29,6 +29,8 @@ Con ello se tiene los archivos que permiten utilizar Mechon Pautero, sin embargo
 
 Para inicializar el proyecto en django, será indispensable instalar las librerias que permiten funcionar el proyecto, para hacerlo se ejecutará `pip3 install -r requirements.txt`
 
+Destacamos que el proyecto utiliza la versión 3.2.25 de Django.
+
 Finalmente, para poder utilizar nuestro software, con django y las librerias instaladas, se debe ejecutar el comando `python manage.py`, con ello el server de MechonPautero comenzará a funcionar.
 
 
